@@ -1,16 +1,17 @@
 import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
 
-import BlocklyComponent, { Block, Value, Field, Shadow } from './Blockly';
-
-import BlocklyJS from 'blockly/javascript';
-
+//import BlocklyJS from 'blockly/javascript';
 //import './blocks/customblocks';
 //import './generator/generator';
 
-function App() {
+import { BrowserRouter as Router, Route, Routes, Link, Redirect } from "react-router-dom";
 
-  const [simpleWorkspace] = useState();
+//pages
+import PolicyProgrammingPage from './Pages/PolicyProgrammingPage';
+import CanteenPage from './Pages/CanteenPage';
+
+const App = () => {
 
   // generateCode = () => {
   //   var code = BlocklyJS.workspaceToCode(
@@ -20,28 +21,12 @@ function App() {
   // }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <BlocklyComponent ref={simpleWorkspace} readOnly={false} trashcan={true} media={'media/'}
-          move={{
-            scrollbars: true,
-            drag: true,
-            wheel: true
-          }}>
-          <Block type="controls_ifelse" />
-          <Block type="logic_compare" />
-          <Block type="logic_operation" />
-          <Block type="controls_repeat_ext">
-            <Value name="TIMES">
-              <Shadow type="math_number">
-                <Field name="NUM">10</Field>
-              </Shadow>
-            </Value>
-          </Block>
-        </BlocklyComponent>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<CanteenPage />} />
+        <Route path="/programming" element={<PolicyProgrammingPage />} />
+      </Routes>
+    </Router>
   );
-
 }
 export default App;

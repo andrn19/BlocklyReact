@@ -1,0 +1,51 @@
+#ProgramButton {
+    background-color: gray;
+    color: black;
+    padding: 5px 15px;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 2%;
+    right: 1%;
+    height: 5%;
+    width: 15%;
+    font-size: 120%;
+}
+
+#BackButton {
+    background-color: gray;
+    color: black;
+    padding: 5px 15px;
+    border-radius: 5px;
+    position: fixed;
+    top: 1%;
+    left: 1%;
+    height: 5%;
+    width: 15%;
+    font-size: 120%;
+}
+
+#BackDiv {
+    color: gray;
+    height: 100%;
+    width: 100%;
+}
+
+#SavedPolicyDiv {
+    position: fixed;
+    height: 100%;
+    width: 20%;
+    right: 0%;
+    color: black;
+    background-color: rgb(143, 205, 209);
+    display: flex;
+    justify-content: center;
+}
+
+#PolicyListDiv {
+    position: fixed;
+    top: 10%;
+    height: 80%;
+    width: 17%;
+    color: black;
+    background-color: rgb(255, 255, 255);
+}

@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useRef} from 'react';
 import './BlocklyComponent.css';
 
 import Blockly from 'blockly/core';
@@ -15,7 +15,7 @@ const BlocklyComponent = (props) => {
 
     useEffect(() => {
         const { children, ...rest} = props;
-        console.log({...rest});
+        console.log({toolbox});
         const primaryWorkspace = Blockly.inject(
             blocklyDiv.current,
             {
@@ -26,7 +26,6 @@ const BlocklyComponent = (props) => {
     });
 
     const {children} = props;
-    console.log({children});
     return (
     <React.Fragment>
         <div ref={blocklyDiv} id="blocklyDiv" />
