@@ -1,9 +1,9 @@
 import React from "react";
-import "./TableInfoTable.css";
+import "./DataTableStyle.css";
 import { useTable } from 'react-table';
 
 
-const TableInfoTable = ({ columns, data }) => {
+const Table = ({ columns, data }) => {
 
   const {
     getTableProps,
@@ -40,4 +40,4 @@ const TableInfoTable = ({ columns, data }) => {
   );
 }
 
-export default TableInfoTable;
+export default Table;

@@ -1,5 +1,5 @@
 import React from "react";
-import TableInfoTable from "./TableInfoTable";
+import Table from "./DataTable";
 
 import './ComponentStyles.css'
 
@@ -32,7 +32,7 @@ const TableInfoBox = () => {
 
     return (
         <div id="TableInfoBox">
-            <TableInfoTable columns={columns} data={data} />
+            <Table columns={columns} data={data} />
         </div>
     );
 }
