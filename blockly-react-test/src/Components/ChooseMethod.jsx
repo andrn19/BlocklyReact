@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useEffect } from "react";
 
-import "./DropdownBtnStyle.css";
+import "./ComponentStyles.css";
 
 const useClickOutside = (handler) => {
     const domNode = useRef();
@@ -40,8 +40,8 @@ const ChooseMethod = () => {
 
 
     return (
-        <div id="ChooseMethodDiv">
-            <h2>Clearing Methods</h2>
+        <div className="ChooseMethodDiv">
+            <h3>Clearing Methods</h3>
             <p>Step 2: Choose methods for selected tables</p>
             <div ref={domNode} className="dropdown">
                 <div className="dropdown-btn" onClick={(e) =>
@@ -63,7 +63,7 @@ const ChooseMethod = () => {
                     </div>
                 )}
             </div>
-            <button onClick={addMethod} id="addButton">
+            <button onClick={addMethod} className="addBtn">
                 ADD
             </button>
         </div>

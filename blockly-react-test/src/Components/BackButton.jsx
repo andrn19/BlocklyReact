@@ -11,7 +11,7 @@ const BackButton = () => {
     }
 
     return (
-        <div id="BackDiv">
+        <div>
             <button onClick={pressed} id="BackButton">
                 &laquo; Back
             </button>
