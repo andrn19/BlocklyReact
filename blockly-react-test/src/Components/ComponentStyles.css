@@ -24,6 +24,12 @@
     font-size: 120%;
 }
 
+#Wrench {
+    font-size: 40;
+    bottom: 3%;
+    right: 3%;
+}
+
 /* The policy list in programming page */
 .SavedPolicyDiv {
     position: fixed;
