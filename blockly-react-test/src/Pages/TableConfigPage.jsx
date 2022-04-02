@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 import "../Components/ComponentStyles.css";
 
+//components
 import TableInfoBox from "../Components/TableInfoBox";
 import ChooseMethod from "../Components/ChooseMethod";
+import CanteenOverview from "../Components/CanteenOverview";
 
 const TableConfigPage = () => {
 
@@ -30,6 +32,7 @@ const TableConfigPage = () => {
             <center><h1>Canteen</h1></center>
             <ChooseMethod />
             <TableInfoBox />
+            <center><CanteenOverview/></center>
         </div>
     );
 }
