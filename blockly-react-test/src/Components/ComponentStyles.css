@@ -132,3 +132,101 @@
     
 }
 /* Div for choosing method for tables box end*/
+
+/* Canteen + Button Overviw */
+
+.container{
+    position: relative;
+    width: 100%;
+    max-width: 447px;
+}
+
+.container .btn1{
+    position: absolute;
+    top: 88%;
+    left: 2%;
+    width: 190px;
+    height: 67px;
+    border: none;
+    background-color: transparent;
+}
+
+.container .btn2{
+    position: absolute;
+    top: 73%;
+    left: 2%;
+    width: 190px;
+    height: 67px;
+    border: none;
+    background-color: transparent;
+}
+
+.container .btn3{
+    position: absolute;
+    top: 58%;
+    left: 2%;
+    width: 190px;
+    height: 67px;
+    border: none;
+    background-color: transparent;
+}
+
+.container .btn4{
+    position: absolute;
+    top: 37%;
+    left: 2%;
+    width: 190px;
+    height: 67px;
+    border: none;
+    background-color: transparent;
+}
+
+.container .btn5{
+    position: absolute;
+    top: 2%;
+    left: 70%;
+    width: 64px;
+    height: 191px;
+    border: none;
+    background-color: transparent;
+}
+
+.container .btn6{
+    position: absolute;
+    top: 85%;
+    left: 85%;
+    width: 39px;
+    height: 88px;
+    border: none;
+    background-color: transparent;
+}
+
+.container .btn7{
+    position: absolute;
+    top: 72%;
+    left: 85%;
+    width: 39px;
+    height: 88px;
+    border: none;
+    background-color: transparent;
+}
+
+.container .btn8{
+    position: absolute;
+    top: 58%;
+    left: 85%;
+    width: 39px;
+    height: 88px;
+    border: none;
+    background-color: transparent;
+}
+
+.container .btn9{
+    position: absolute;
+    top: 44%;
+    left: 85%;
+    width: 39px;
+    height: 88px;
+    border: none;
+    background-color: transparent;
+}
