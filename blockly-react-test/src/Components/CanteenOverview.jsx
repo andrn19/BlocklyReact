@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import "./ComponentStyles.css";
 import image from '../Assets/Canteen_walls.png';
 import image2 from '../Assets/LargeTableHorizontal.png';
