@@ -144,41 +144,77 @@
 .container .btn1{
     position: absolute;
     top: 88%;
-    left: 2%;
+    left: 3%;
     width: 190px;
     height: 67px;
     border: none;
     background-color: transparent;
+}
+
+.container .btn1Toggled{
+    position: absolute;
+    top: 88%;
+    left: 3%;
+    width: 184px;
+    height: 61px;
+    border: 4px solid green;
 }
 
 .container .btn2{
     position: absolute;
     top: 73%;
-    left: 2%;
+    left: 3%;
     width: 190px;
     height: 67px;
     border: none;
     background-color: transparent;
+}
+
+.container .btn2Toggled{
+    position: absolute;
+    top: 73%;
+    left: 3%;
+    width: 184px;
+    height: 61px;
+    border: 4px solid green;
 }
 
 .container .btn3{
     position: absolute;
     top: 58%;
-    left: 2%;
+    left: 3%;
     width: 190px;
     height: 67px;
     border: none;
     background-color: transparent;
 }
 
+.container .btn3Toggled{
+    position: absolute;
+    top: 58%;
+    left: 3%;
+    width: 184px;
+    height: 61px;
+    border: 4px solid green;
+}
+
 .container .btn4{
     position: absolute;
     top: 37%;
-    left: 2%;
+    left: 3%;
     width: 190px;
     height: 67px;
     border: none;
     background-color: transparent;
+}
+
+.container .btn4Toggled{
+    position: absolute;
+    top: 37%;
+    left: 3%;
+    width: 184px;
+    height: 61px;
+    border: 4px solid green;
 }
 
 .container .btn5{
@@ -191,27 +227,35 @@
     background-color: transparent;
 }
 
+.container .btn5Toggled{
+    position: absolute;
+    top: 2%;
+    left: 70%;
+    width: 58px;
+    height: 185px;
+    border: 4px solid green;
+}
+
 .container .btn6{
     position: absolute;
-    top: 85%;
+    top: 44%;
     left: 85%;
     width: 39px;
     height: 88px;
     border: none;
     background-color: transparent;
+}
+
+.container .btn6Toggled{
+    position: absolute;
+    top: 44%;
+    left: 85%;
+    width: 33px;
+    height: 82px;
+    border: 4px solid green;
 }
 
 .container .btn7{
-    position: absolute;
-    top: 72%;
-    left: 85%;
-    width: 39px;
-    height: 88px;
-    border: none;
-    background-color: transparent;
-}
-
-.container .btn8{
     position: absolute;
     top: 58%;
     left: 85%;
@@ -221,12 +265,54 @@
     background-color: transparent;
 }
 
-.container .btn9{
+.container .btn7Toggled{
     position: absolute;
-    top: 44%;
+    top: 58%;
+    left: 85%;
+    width: 33px;
+    height: 82px;
+    border: 4px solid green;
+}
+
+.container .btn8{
+    position: absolute;
+    top: 72%;
     left: 85%;
     width: 39px;
     height: 88px;
     border: none;
     background-color: transparent;
 }
+
+.container .btn8Toggled{
+    position: absolute;
+    top: 72%;
+    left: 85%;
+    width: 33px;
+    height: 82px;
+    border: 4px solid green;
+}
+
+.container .btn9{
+    position: absolute;
+    top: 86%;
+    left: 85%;
+    width: 39px;
+    height: 88px;
+    border: none;
+    background-color: transparent;
+}
+
+.container .btn9Toggled{
+    position: absolute;
+    top: 86%;
+    left: 85%;
+    width: 33px;
+    height: 82px;
+    border: 4px solid green;
+}
+
+
+
+
+

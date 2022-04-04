@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./ComponentStyles.css";
 import image from '../Assets/Canteen_walls.png';
 import image2 from '../Assets/LargeTableHorizontal.png';
@@ -6,34 +6,67 @@ import image3 from '../Assets/LargeTableVertical.png';
 import image4 from '../Assets/SmallTable.png';
 
 function Canteen() {
-    // Import result is the URL of your image
+
+    const[state1, setState1] = useState(false);
+    const[state2, setState2] = useState(false);
+    const[state3, setState3] = useState(false);
+    const[state4, setState4] = useState(false);
+    const[state5, setState5] = useState(false);
+    const[state6, setState6] = useState(false);
+    const[state7, setState7] = useState(false);
+    const[state8, setState8] = useState(false);
+    const[state9, setState9] = useState(false);
+
+    const toggle1 = () => {
+        setState1(!state1);
+    }
+
+    const toggle2 = () => {
+        setState2(!state2);
+    }
+
+    const toggle3 = () => {
+        setState3(!state3);
+    }
+
+    const toggle4 = () => {
+        setState4(!state4);
+    }
+
+    const toggle5 = () => {
+        setState5(!state5);
+    }
+
+    const toggle6 = () => {
+        setState6(!state6);
+    }
+
+    const toggle7 = () => {
+        setState7(!state7);
+    }
+
+    const toggle8 = () => {
+        setState8(!state8);
+    }
+
+    const toggle9 = () => {
+        setState9(!state9);
+    }
+
     return (
         <div class="container">
             <img src={image} alt="Canteen" />
-            <button class="btn1" onClick={Hello}><img src={image2} alt="Table1Horizontal" 
-            /></button>
-            <button class="btn2" onClick={Hello}><img src={image2} alt="Table2Horizontal" 
-            /></button>
-            <button class="btn3" onClick={Hello}><img src={image2} alt="Table3Horizontal" 
-            /></button>
-            <button class="btn4" onClick={Hello}><img src={image2} alt="Table4Horizontal" 
-            /></button>
-            <button class="btn5" onClick={Hello}><img src={image3} alt="Table5Horizontal" 
-            /></button>
-            <button class="btn6" onClick={Hello}><img src={image4} alt="Table6Horizontal" 
-            /></button>
-            <button class="btn7" onClick={Hello}><img src={image4} alt="Table7Horizontal" 
-            /></button>
-            <button class="btn8" onClick={Hello}><img src={image4} alt="Table8Horizontal" 
-            /></button>
-            <button class="btn9" onClick={Hello}><img src={image4} alt="Table9Horizontal" 
-            /></button>
+            <img className={(state1 ? 'btn1Toggled' : 'btn1')} id='1' onClick={toggle1} src={image2} />
+            <img className={(state2 ? 'btn2Toggled' : 'btn2')} id='2' onClick={toggle2} src={image2} />
+            <img className={(state3 ? 'btn3Toggled' : 'btn3')} id='3' onClick={toggle3} src={image2} />
+            <img className={(state4 ? 'btn4Toggled' : 'btn4')} id='4' onClick={toggle4} src={image2} />
+            <img className={(state5 ? 'btn5Toggled' : 'btn5')} id='5' onClick={toggle5} src={image3} />
+            <img className={(state6 ? 'btn6Toggled' : 'btn6')} id='6' onClick={toggle6} src={image4} />
+            <img className={(state7 ? 'btn7Toggled' : 'btn7')} id='7' onClick={toggle7} src={image4} />
+            <img className={(state8 ? 'btn8Toggled' : 'btn8')} id='8' onClick={toggle8} src={image4} />
+            <img className={(state9 ? 'btn9Toggled' : 'btn9')} id='9' onClick={toggle9} src={image4} />
         </div>
     ); 
-}
-
-function Hello () {
-    console.log("You pressed me, Stop pressing me Senpai");
 }
   
 export default Canteen;
