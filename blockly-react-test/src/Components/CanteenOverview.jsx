@@ -6,29 +6,10 @@ import image3 from '../Assets/LargeTableVertical.png';
 import image4 from '../Assets/SmallTable.png';
 import { useEmitter } from './Emitter';
 
-const Canteen = () => {
 
+function Canteen() {
     const [tableNr, setTableNr] = useState([])
     const { setDataEvent } = useEmitter()
-
-    useEffect(() => {
-        setDataEvent(tableNr)
-        tableNr.sort()
-        console.log(tableNr)
-    })
-
-    const Hello = (event) => {
-        const tableID = event.currentTarget.id
-        setTableNr(arr => [...arr, tableID])
-        
-        // if (tableNr.includes(tableID)) {
-        //     setTableNr(tableNr.splice(tableID, 1))
-        // }
-    }
-
-
-    // Import result is the URL of your image
-function Canteen() {
 
     const[state1, setState1] = useState(false);
     const[state2, setState2] = useState(false);
@@ -39,6 +20,12 @@ function Canteen() {
     const[state7, setState7] = useState(false);
     const[state8, setState8] = useState(false);
     const[state9, setState9] = useState(false);
+
+    useEffect(() => {
+        setDataEvent(tableNr)
+        tableNr.sort()
+        console.log(tableNr)
+    })
 
     const toggle1 = () => {
         setState1(!state1);
@@ -74,6 +61,15 @@ function Canteen() {
 
     const toggle9 = () => {
         setState9(!state9);
+    }
+
+    const Hello = (event) => {
+        const tableID = event.currentTarget.id
+        setTableNr(arr => [...arr, tableID])
+        
+        // if (tableNr.includes(tableID)) {
+        //     setTableNr(tableNr.splice(tableID, 1))
+        // }
     }
 
     return (
