@@ -7,14 +7,14 @@ const useClickOutside = (handler) => {
     const domNode = useRef();
 
     useEffect(() => {
-        const maybeHandler = (event) => {
+        const targetHandler = (event) => {
             if (!domNode.current.contains(event.target)) {
                 handler();
             };
         };
-        document.addEventListener("mousedown", maybeHandler);
+        document.addEventListener("mousedown", targetHandler);
         return () => {
-            document.removeEventListener("mousedown", maybeHandler);
+            document.removeEventListener("mousedown", targetHandler);
         };
     });
     return domNode
@@ -36,8 +36,6 @@ const ChooseMethod = () => {
     const domNode = useClickOutside(() => {
         setIsActive(false);
     });
-
-
 
     return (
         <div className="ChooseMethodDiv">

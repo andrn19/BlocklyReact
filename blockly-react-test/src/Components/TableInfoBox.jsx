@@ -33,16 +33,6 @@ const TableInfoBox = () => {
         { tableNr: "5", method: "clear" },
         { tableNr: "6", method: "clear" },
         { tableNr: "6", method: "clear" },
-        { tableNr: "6", method: "clear" },
-        { tableNr: "6", method: "clear" },
-        { tableNr: "6", method: "clear" },
-        { tableNr: "6", method: "clear" },
-        { tableNr: "6", method: "clear" },
-        { tableNr: "6", method: "clear" },
-        { tableNr: "6", method: "clear" },
-        { tableNr: "6", method: "clear" },
-        { tableNr: "6", method: "clear" },
-        { tableNr: "6", method: "clear" },
         { tableNr: "7", method: "clear" }
     ];
 

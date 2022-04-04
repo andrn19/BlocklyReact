@@ -8,6 +8,7 @@ import "../Components/ComponentStyles.css";
 import TableLog from "../Components/TableLog";
 import StatusQue from "../Components/StatusQue";
 import CanteenOverview from "../Components/CanteenOverview";
+import Emitter from "../Components/Emitter";
 
 const CanteenPage = () => {
 
@@ -21,9 +22,11 @@ const CanteenPage = () => {
         <div>
             <FaWrench onClick={toConfig} size="2em" style={{ position:"fixed", bottom:"2%", right:"2%" }}/>
             <center><h1>Canteen</h1></center>
+            <Emitter>
             <center><CanteenOverview/></center>
-            <StatusQue />
             <TableLog />
+            </Emitter>
+            <StatusQue />
         </div>
     );
 }

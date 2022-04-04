@@ -15,7 +15,6 @@ const BlocklyComponent = (props) => {
 
     useEffect(() => {
         const { children, ...rest} = props;
-        console.log({toolbox});
         const primaryWorkspace = Blockly.inject(
             blocklyDiv.current,
             {

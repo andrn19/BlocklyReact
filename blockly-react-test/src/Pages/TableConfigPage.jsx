@@ -7,6 +7,7 @@ import "../Components/ComponentStyles.css";
 import TableInfoBox from "../Components/TableInfoBox";
 import ChooseMethod from "../Components/ChooseMethod";
 import CanteenOverview from "../Components/CanteenOverview";
+import Emitter from "../Components/Emitter";
 
 const TableConfigPage = () => {
 
@@ -31,8 +32,10 @@ const TableConfigPage = () => {
             </button>
             <center><h1>Canteen</h1></center>
             <ChooseMethod />
+            <Emitter>
             <TableInfoBox />
             <center><CanteenOverview/></center>
+            </Emitter>
         </div>
     );
 }
