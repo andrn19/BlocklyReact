@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import "./ComponentStyles.css";
 import image from '../Assets/Canteen_walls.png';
 import image2 from '../Assets/LargeTableHorizontal.png';
@@ -9,81 +9,43 @@ import { useEmitter } from './Emitter';
 
 function Canteen() {
     const [tableNr, setTableNr] = useState([])
+    const [selectedTables, setSelectedTables] = useState([]);
     const { setDataEvent } = useEmitter()
 
-    const[state1, setState1] = useState(false);
-    const[state2, setState2] = useState(false);
-    const[state3, setState3] = useState(false);
-    const[state4, setState4] = useState(false);
-    const[state5, setState5] = useState(false);
-    const[state6, setState6] = useState(false);
-    const[state7, setState7] = useState(false);
-    const[state8, setState8] = useState(false);
-    const[state9, setState9] = useState(false);
 
     useEffect(() => {
         setDataEvent(tableNr)
-        tableNr.sort()
         console.log(tableNr)
     })
 
-    const toggle1 = () => {
-        setState1(!state1);
-    }
-
-    const toggle2 = () => {
-        setState2(!state2);
-    }
-
-    const toggle3 = () => {
-        setState3(!state3);
-    }
-
-    const toggle4 = () => {
-        setState4(!state4);
-    }
-
-    const toggle5 = () => {
-        setState5(!state5);
-    }
-
-    const toggle6 = () => {
-        setState6(!state6);
-    }
-
-    const toggle7 = () => {
-        setState7(!state7);
-    }
-
-    const toggle8 = () => {
-        setState8(!state8);
-    }
-
-    const toggle9 = () => {
-        setState9(!state9);
-    }
-
-    const Hello = (event) => {
+    const toggle = (event) => {
         const tableID = event.currentTarget.id
-        setTableNr(arr => [...arr, tableID])
-        
-        // if (tableNr.includes(tableID)) {
-        //     setTableNr(tableNr.splice(tableID, 1))
-        // }
+        console.log(tableID)
+        if (tableNr.includes(tableID)) {
+            const index = tableNr.indexOf(tableID)
+            tableNr.splice(index, 1)
+            selectedTables.splice(index, 1)
+            setTableNr(arr => [...arr])
+            setSelectedTables(arr => [...arr])
+        }
+        else {
+            setTableNr(arr => [...arr, tableID])
+            setSelectedTables(arr => [...arr, tableID])
+        }
     }
 
     return (
         <div class="container">
             <img src={image} alt="Canteen" />
-            <img className={(state1 ? 'btn1Toggled' : 'btn1')} id='1' onClick={toggle1} src={image2} />
-            <img className={(state2 ? 'btn2Toggled' : 'btn2')} id='2' onClick={toggle2} src={image2} />
-            <img className={(state3 ? 'btn3Toggled' : 'btn3')} id='3' onClick={toggle3} src={image2} />
-            <img className={(state4 ? 'btn4Toggled' : 'btn4')} id='4' onClick={toggle4} src={image2} />
-            <img className={(state5 ? 'btn5Toggled' : 'btn5')} id='5' onClick={toggle5} src={image3} />
-            <img className={(state6 ? 'btn6Toggled' : 'btn6')} id='6' onClick={toggle6} src={image4} />
-            <img className={(state7 ? 'btn7Toggled' : 'btn7')} id='7' onClick={toggle7} src={image4} />
-            <img className={(state8 ? 'btn8Toggled' : 'btn8')} id='8' onClick={toggle8} src={image4} />
-            <img className={(state9 ? 'btn9Toggled' : 'btn9')} id='9' onClick={toggle9} src={image4} />
+            <img className={(selectedTables.includes("1") ? 'btn1Toggled' : 'btn1')} id='1' onClick={toggle} src={image2} />
+            <img className={(selectedTables.includes("2") ? 'btn2Toggled' : 'btn2')} id='2' onClick={toggle} src={image2} />
+            <img className={(selectedTables.includes("3") ? 'btn3Toggled' : 'btn3')} id='3' onClick={toggle} src={image2} />
+            <img className={(selectedTables.includes("4") ? 'btn4Toggled' : 'btn4')} id='4' onClick={toggle} src={image2} />
+            <img className={(selectedTables.includes("5") ? 'btn5Toggled' : 'btn5')} id='5' onClick={toggle} src={image3} />
+            <img className={(selectedTables.includes("6") ? 'btn6Toggled' : 'btn6')} id='6' onClick={toggle} src={image4} />
+            <img className={(selectedTables.includes("7") ? 'btn7Toggled' : 'btn7')} id='7' onClick={toggle} src={image4} />
+            <img className={(selectedTables.includes("8") ? 'btn8Toggled' : 'btn8')} id='8' onClick={toggle} src={image4} />
+            <img className={(selectedTables.includes("9") ? 'btn9Toggled' : 'btn9')} id='9' onClick={toggle} src={image4} />
         </div>
     );
 }
