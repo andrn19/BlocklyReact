@@ -47,7 +47,7 @@ const TableInfoBox = () => {
     ];
 
     return (
-        <div id="TableInfoBox">
+        <div style={{ position: "fixed", top: "15%", left: "2%", height: "43%", width: "25%" }}>
             <Table columns={columns} data={data} />
         </div>
     );

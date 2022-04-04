@@ -24,6 +24,7 @@
     font-size: 120%;
 }
 
+
 /* The policy list in programming page */
 .SavedPolicyDiv {
     position: fixed;
@@ -66,20 +67,11 @@
 }
 /* The policy list in programming page end */
 
-/* Div for table info box */
-#TableInfoBox {
-    position: fixed;
-    top: 35%;
-    right: 2%;
-    height: 43%;
-    width: 25%;
-}
-/* Div for table info box end */
 
 /* Div for choosing method for tables box */
 .ChooseMethodDiv {
     position: fixed;
-    top: 1%;
+    top: 15%;
     right: 2%;
     height: 30%;
     width: 25%;
