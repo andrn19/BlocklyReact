@@ -26,7 +26,7 @@ const TableInfoBox = () => {
     );
 
     const data = [
-        { tableNr: "1", method: "Very long method så man kan se at boxen bliver stor :)" },
+        { tableNr: "1", method: "Very long method :)" },
         { tableNr: "2", method: "clear" },
         { tableNr: "3", method: "clear" },
         { tableNr: "4", method: "clear" },

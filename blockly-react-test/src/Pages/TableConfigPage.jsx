@@ -6,8 +6,11 @@ import "../Components/ComponentStyles.css";
 //components
 import TableInfoBox from "../Components/TableInfoBox";
 import ChooseMethod from "../Components/ChooseMethod";
+import DragNDropBoard from "../Components/DragNDropBoards";
+import DragNDropPolicies from "../Components/DragNDropPolicies";
 import CanteenOverview from "../Components/CanteenOverview";
 import Emitter from "../Components/Emitter";
+import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 
 const TableConfigPage = () => {
 
@@ -31,13 +34,14 @@ const TableConfigPage = () => {
                 &laquo; Back
             </button>
             <center><h1>Canteen</h1></center>
-            <ChooseMethod />
             <Emitter>
             <TableInfoBox />
-            <center><CanteenOverview/></center>
+            <right><DragNDropBoard id="board-1"></DragNDropBoard></right>
             </Emitter>
+            <center><CanteenOverview/></center>
         </div>
     );
 }
+
 
 export default TableConfigPage
