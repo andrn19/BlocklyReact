@@ -1,13 +1,32 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import Table from "./DataTable";
-
 import './ComponentStyles.css'
-
+import { useEmitter } from './Emitter';
 
 const TableInfoBox = () => {
+   
+    const { data } = useEmitter(); 
+    
+    const [policies, setShownPolicies]=useState( 
+        []
+    );
 
-    const columns = React.useMemo(
-        () => [
+    useEffect(() => {
+        if(typeof data === 'object') {
+            setShownPolicies(arr => [...arr, data]);
+        } 
+    }, [data]);
+
+    //useEffect(() => {
+    //    console.log(policies)
+    //})
+    
+    const hi = () => {
+        policies.pop();
+        setShownPolicies([...policies]);
+    }
+ 
+    const columns = [
             {
                 Header: 'Table Info',
                 columns: [
@@ -16,31 +35,23 @@ const TableInfoBox = () => {
                         accessor: 'tableNr',
                     },
                     {
-                        Header: 'Method',
-                        accessor: 'method',
+                        Header: 'Policy',
+                        accessor: 'policy',
+                    },
+                    {
+                        accessor: 'action',
+                        Cell: () => (<button onClick={hi}>X</button>)
                     },
                 ],
             },
-        ],
-        []
-    );
-
-    const data = [
-        { tableNr: "1", method: "Very long method :)" },
-        { tableNr: "2", method: "clear" },
-        { tableNr: "3", method: "clear" },
-        { tableNr: "4", method: "clear" },
-        { tableNr: "5", method: "clear" },
-        { tableNr: "6", method: "clear" },
-        { tableNr: "6", method: "clear" },
-        { tableNr: "7", method: "clear" }
-    ];
+    ]
 
     return (
         <div style={{ position: "fixed", top: "15%", left: "2%", height: "43%", width: "25%" }}>
-            <Table columns={columns} data={data} />
+            <Table columns={columns} data={policies}/>
         </div>
     );
 }
+
 
 export default TableInfoBox;

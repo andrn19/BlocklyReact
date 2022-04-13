@@ -1,4 +1,5 @@
 import React from "react";
+import { useEmitter } from './Emitter';
 import { DragDropContainer} from 'react-drag-drop-container';
 
 function DragNDropPolicies(props) {
@@ -22,21 +23,23 @@ function DragNDropPolicies(props) {
         }
     ];
 
-    const dropHandler = (e) => {
-        console.log(`${e.dropData}`);
+    const { setDataEvent } = useEmitter();
+    
+    const dropHandler = (e) => {  
+        setDataEvent(`${e.dropData}`);
     };
 
     return (
         <div>  
             <div id={props.id} > 
-                {policyArray.map((policy) => {
-                    return <DragDropContainer 
+                {policyArray.map((policy) => (
+                    <DragDropContainer 
                         targetKey="foo"  
                         dragData={policy.PolicyName}
                         onDrop={dropHandler}>                  
                     <ul className={'policies'} > {policy.PolicyName} </ul> 
                     </DragDropContainer>
-                })} 
+                ))} 
             </div>
         </div>
     )

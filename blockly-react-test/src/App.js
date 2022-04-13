@@ -5,7 +5,7 @@ import React from 'react';
 //import './blocks/customblocks';
 //import './generator/generator';
 
-import { BrowserRouter as Router, Route, Routes, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 //pages
 import PolicyProgrammingPage from './Pages/PolicyProgrammingPage';

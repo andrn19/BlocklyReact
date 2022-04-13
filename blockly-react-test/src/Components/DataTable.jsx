@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./DataTableStyle.css";
 import { useTable } from 'react-table';
 
