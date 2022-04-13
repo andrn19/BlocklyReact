@@ -9,6 +9,7 @@ import TableLog from "../Components/TableLog";
 import StatusQue from "../Components/StatusQue";
 import CanteenOverview from "../Components/CanteenOverview";
 import Emitter from "../Components/Emitter";
+import PolicyQue from "../Components/policyQue";
 
 const CanteenPage = () => {
 
@@ -24,9 +25,8 @@ const CanteenPage = () => {
             <center><h1>Canteen</h1></center>
             <Emitter>
             <center><CanteenOverview/></center>
-            <TableLog />
             </Emitter>
-            <StatusQue />
+            <PolicyQue/>
         </div>
     );
 }

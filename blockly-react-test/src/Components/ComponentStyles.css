@@ -315,6 +315,15 @@
     right: 2%;
     padding: 15px;
 }
+/* policyQue list */
+.queDiv {
+    position: fixed;
+    top: 1%;
+    left: .5%;
+    width: 30%;
+    height: 30rem;
+    background-color: rgb(88, 84, 84);
+}
 
 .dragndropview .policies {
     position: relative;
@@ -326,4 +335,20 @@
     padding-right: 25px;
     left: 50%;
 }
+.queDiv .queList {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    margin: 1rem auto;
+    max-width: fit-content;
+    padding: .5rem .5rem 1rem;
+    border-radius: 0.2rem;
+    max-height: 22rem;
+    overflow-y: scroll;
+}
 
+.queListItem {
+    color: white;
+    padding: 0.8rem 0.3rem;
+    border-bottom: 1px solid #dddddd;
+    background-color: #4443434f;
+    height: fit-content;
+}
