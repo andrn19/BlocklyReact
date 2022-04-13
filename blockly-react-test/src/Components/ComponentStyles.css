@@ -315,15 +315,6 @@
     right: 2%;
     padding: 15px;
 }
-/* policyQue list */
-.queDiv {
-    position: fixed;
-    top: 1%;
-    left: .5%;
-    width: 30%;
-    height: 30rem;
-    background-color: rgb(88, 84, 84);
-}
 
 .dragndropview .policies {
     position: relative;
@@ -335,6 +326,17 @@
     padding-right: 25px;
     left: 50%;
 }
+
+/* policyQue list */
+.queDiv {
+    position: fixed;
+    top: 1%;
+    left: .5%;
+    width: 30%;
+    height: 30rem;
+    background-color: rgb(88, 84, 84);
+}
+
 .queDiv .queList {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     margin: 1rem auto;
