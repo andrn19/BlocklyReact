@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaWrench } from "react-icons/fa"
-
 import "../Components/ComponentStyles.css";
 
 //components
@@ -24,7 +23,9 @@ const CanteenPage = () => {
             <FaWrench onClick={toConfig} size="2em" style={{ position:"fixed", bottom:"2%", right:"2%" }}/>
             <center><h1>Canteen</h1></center>
             <Emitter>
-            <center><CanteenOverview/></center>
+                <div className="frontPageCanteenView">
+                <CanteenOverview/>
+                </div>
             </Emitter>
             <PolicyQue/>
         </div>

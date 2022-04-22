@@ -1,6 +1,5 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-
 import List from "./data";
 
 const PolicyQue = () => {
@@ -19,7 +18,7 @@ const PolicyQue = () => {
 
     const stateStyle = (state) => {
         if(state == "Done") {
-            return { color: "lightgreen" }
+            return { color: "lightgreen"}
         }
         if(state == "Currently") {
             return { color: "lightblue" }
@@ -34,7 +33,7 @@ const PolicyQue = () => {
 
     return (
         <div className="queDiv">
-            <center><h2>Tasks</h2></center>
+            <center style={{color: "white"}}><h2>Tasks</h2></center>
             <DragDropContext
                 onDragEnd={onDragEnd}>
                 <ul className="queList">
@@ -51,7 +50,7 @@ const PolicyQue = () => {
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}>
                                                 Table {item.table}: <span style={stateStyle(item.tableStatus)}>{item.tableStatus} {item.policy}</span><br />
-                                                Last cleaned {item.lastClean}
+                                                <span style={{fontSize: 14, color: "darkgrey"}}> Last cleaned {item.lastClean}</span>
                                             </p>
                                         )}
                                     </Draggable>
