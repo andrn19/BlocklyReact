@@ -20,7 +20,8 @@ function DragNDropPolicies(props) {
         {
             PolicyName: 'Policy 4',
             Id: '4'
-        }
+        },
+        
     ];
 
     const { setDataEvent } = useEmitter();
@@ -32,6 +33,7 @@ function DragNDropPolicies(props) {
     return (
         <div>  
             <div id={props.id} > 
+                <h1 style={{fontSize: 20, paddingLeft: 25}}>Drag and drop policies</h1>
                 {policyArray.map((policy) => (
                     <DragDropContainer 
                         targetKey="foo"  

@@ -4,6 +4,7 @@ import image from '../Assets/Canteen_walls.png';
 import image2 from '../Assets/LargeTableHorizontal.png';
 import image3 from '../Assets/LargeTableVertical.png';
 import image4 from '../Assets/SmallTable.png';
+import image5 from '../Assets/compass.png';
 import {DropTarget} from 'react-drag-drop-container';
 import { useEmitter } from './Emitter';
 
@@ -20,6 +21,9 @@ function Canteen(props) {
     return (
                 <div class="container">
                     <img src={image}/>
+                    <div style={{ position: "absolute", top: "3%", left: "4%"}}>
+                        <img src={image5}></img>
+                    </div>
                     <DropTarget 
                     targetKey="foo" 
                     dropData={'Table 1'}
