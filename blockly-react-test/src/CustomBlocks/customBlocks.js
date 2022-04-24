@@ -73,7 +73,8 @@ var blocks = [
         "colour": 0,
         "tooltip": "",
         "helpUrl": ""
-      }
+      },
+      
 ]
 
 for (var Block in blocks) {

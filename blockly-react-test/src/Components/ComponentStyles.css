@@ -343,13 +343,13 @@
     margin: 1rem auto;
     max-width: fit-content;
     padding: .5rem .5rem 1rem;
-    border-radius: 0.2rem;
     max-height: 22rem;
     overflow-y: scroll;
 }
 
 .queListItem {
     color: white;
+    margin: 0rem;
     padding: 0.8rem 0.3rem;
     border-bottom: 1px solid #dddddd;
     background-color: #4443434f;
