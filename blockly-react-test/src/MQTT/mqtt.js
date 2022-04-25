@@ -1,4 +1,5 @@
 import mqtt from 'mqtt';
+import jsonsimple from 'json-simple';
 
 const url = "ws://localhost";
 const options = {
@@ -27,8 +28,10 @@ export function unsubscribe(client, topic) {
 
 //skal nok laves i hvert component der skal bruge det
 export function onMessage(client) {
-    client.on("message", (topic, message) => {     
-        console.log(message.toString());
+    client.on("message", (topic, message) => {   
+        var msg = message.toString()
+        var jsonMSG = jsonsimple.decode(msg)
+        return jsonMSG
     });
 }
 

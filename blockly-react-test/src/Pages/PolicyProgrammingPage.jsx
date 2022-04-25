@@ -2,15 +2,16 @@ import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Blockly from 'blockly/core';
 
+
 import "../Components/ComponentStyles.css";
-import "../CustomBlocks/customBlocks"
-import JSONGenerator from "../generator/generator"
+import "../CustomBlocks/customBlocks";
+import JSONGenerator from "../generator/generator";
 
 //components
 import BlocklyComponent, { Block, Value, Field, Shadow, Category } from '../Blockly';
 import PolicyList from "../Components/PolicyList";
 
-import {mqttConnect, subscribe, onMessage, unsubscribe} from '../MQTT/mqtt';
+import {mqttConnect, closeConnection} from '../MQTT/mqtt';
 
 const PolicyProgrammingPage = () => {
 
@@ -26,9 +27,8 @@ const PolicyProgrammingPage = () => {
           simpleWorkspace.current
         );
         const client = mqttConnect();
-        client.publish('test', code)
-
-        console.log(code);
+        client.publish('test', code);
+        closeConnection(client);
       }
 
     return (
