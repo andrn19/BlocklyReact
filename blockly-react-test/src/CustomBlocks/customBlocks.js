@@ -18,19 +18,19 @@ var blocks = [
           },
           {
             "type": "input_statement",
-            "name": "Actions"
+            "name": "actions"
           },
           {
             "type": "input_statement",
-            "name": "Conditions"
+            "name": "conditions"
           },
           {
             "type": "input_statement",
-            "name": "Handling"
+            "name": "handling"
           },
           {
             "type": "input_statement",
-            "name": "Objects"
+            "name": "objects"
           }
         ],
         "colour": 120,
@@ -285,15 +285,15 @@ var blocks = [
             "options": [
               [
                 "Return to charger",
-                "1"
+                "Return to charger"
               ],
               [
                 "Go to next task",
-                "2"
+                "Go to next task"
               ],
               [
                 "Idle",
-                "3"
+                "Idle"
               ]
             ]
           }

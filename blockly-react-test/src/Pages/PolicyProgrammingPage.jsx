@@ -27,6 +27,8 @@ const PolicyProgrammingPage = () => {
         );
         const client = mqttConnect();
         client.publish('test', code)
+
+        console.log(code);
       }
 
     return (
@@ -40,25 +42,18 @@ const PolicyProgrammingPage = () => {
                     <Block type="ClearingPolicy" />
                     <Block type="CleaningPolicy" />
                 </Category>
-                <Category name="Table Objects" colour="65">
-                    <Block type="allobjects" />
-                    <Block type="plate" />
-                    <Block type="napkin" />
-                    <Block type="utensil" />
-                    <Block type="glass" />
-                    <Block type="bottle" />
-                    <Block type="can" />
-                    <Block type="cup" />
-                </Category>
-                <Category name="Conditions" colour="260">
-                    <Block type="time start" />
-                    <Block type="people count" />
-                    <Block type="object count" />
-                    <Block type="policyOnCompletion" />
-                </Category>
-                <Category name="Actions" colour="330">
+                <Category name="Cleaning Actions" colour="330">
                     <Block type="go to" />
                     <Block type="clean" />
+                    <Block type="clear and clean" />
+                    <Block type="scan" />
+                    <Block type="start" />
+                    <Block type="stop" />
+                    <Block type="no-op" />
+                    <Block type="charge" />
+                </Category>
+                <Category name="Clearing Actions" colour="330">
+                    <Block type="go to" />
                     <Block type="clear" />
                     <Block type="clear object" />
                     <Block type="clear and clean" />
@@ -68,10 +63,28 @@ const PolicyProgrammingPage = () => {
                     <Block type="no-op" />
                     <Block type="charge" />
                 </Category>
+                <Category name="Start Conditions" colour="260">
+                    <Block type="time start" />
+                    <Block type="people count" />
+                    <Block type="object count" />
+                </Category>
+                <Category name="Stop Conditions" colour="260">
+                    <Block type="policyOnCompletion" />
+                </Category>
                 <Category name="Handling" colour="20">
                     <Block type="slow" />
                     <Block type="careful" />
                     <Block type="normal" />
+                </Category>
+                <Category name="Table Objects" colour="65">
+                    <Block type="allobjects" />
+                    <Block type="plate" />
+                    <Block type="napkin" />
+                    <Block type="utensil" />
+                    <Block type="glass" />
+                    <Block type="bottle" />
+                    <Block type="can" />
+                    <Block type="cup" />
                 </Category>
             </BlocklyComponent>
         </div>

@@ -17,11 +17,11 @@ JSONGenerator.scrub_ = function (block, code) {
 
 JSONGenerator['ClearingPolicy'] = function (block) {
     var text_policyname = block.getFieldValue('POLICYNAME');
-    var statements_condition = JSONGenerator.statementToCode(block, 'condition');
+    var statements_condition = JSONGenerator.statementToCode(block, 'conditions');
     var statements_actions = JSONGenerator.statementToCode(block, 'actions');
     var statements_objects = JSONGenerator.statementToCode(block, 'objects');
     var statements_handling = JSONGenerator.statementToCode(block, 'handling');
-    var code = '{\n "@type": "",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "",\n "condition": "' + statements_condition + '",\n "vars": "",\n "action": "' + statements_actions + '",\n "handling": "' + statements_handling + '",\n "policyOn": [\n {\n "@type": "' + statements_objects + '",\n "name": "",\n "desciption":""\n }\n ],\n "policyIn": {\n "@type": "",\n "name": "",\n "desciption":""\n }\n }';
+    var code = '{\n "@type": "ClearingPolicy",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "",\n "condition": "' + statements_condition + '",\n "vars": "",\n "action": "' + statements_actions + '",\n "handling": "' + statements_handling + '",\n "policyOn": [\n {\n "@type": "' + statements_objects + '",\n "name": "",\n "desciption":""\n }\n ],\n "policyIn": {\n "@type": "",\n "name": "",\n "desciption":""\n }\n }';
     return code;
 };
 
@@ -29,7 +29,7 @@ JSONGenerator['CleaningPolicy'] = function (block) {
     var text_policyname = block.getFieldValue('POLICYNAME');
     var statements_condition = JSONGenerator.statementToCode(block, 'condition');
     var statements_actions = JSONGenerator.statementToCode(block, 'actions');
-    var code = '{\n "@type": "",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "",\n "condition": "' + statements_condition + '",\n "vars": "",\n "action": "' + statements_actions + '",\n "handling": "",\n "policyOn": [\n {\n "@type": "",\n "name": "",\n "desciption":""\n }\n ],\n "policyIn": {\n "@type": "",\n "name": "",\n "desciption":""\n }\n }';
+    var code = '{\n "@type": "CleaningPolicy",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "",\n "condition": "' + statements_condition + '",\n "vars": "",\n "action": "' + statements_actions + '",\n "handling": "",\n "policyOn": [\n {\n "@type": "",\n "name": "",\n "desciption":""\n }\n ],\n "policyIn": {\n "@type": "",\n "name": "",\n "desciption":""\n }\n }';
     return code;
 };
 
@@ -91,25 +91,25 @@ JSONGenerator["cup"] = function (block) {
 
 JSONGenerator["time start"] = function (block) {
     var text_startTime = block.getFieldValue('startTime');
-    var code = '"condition": "' + text_startTime + '",\n';
+    var code = ''+text_startTime+',';
     return code;
 };
 
 JSONGenerator["people count"] = function (block) {
     var text_peopleCount = block.getFieldValue('peopleCount');
-    var code = '"condition": "' + text_peopleCount + '",\n';
+    var code = '' + text_peopleCount + ',';
     return code;
 };
 
 JSONGenerator["object count"] = function (block) {
     var text_objectCount = block.getFieldValue('objectCount');
-    var code = '"condition": "' + text_objectCount + '",\n';
+    var code = '' + text_objectCount + ',';
     return code;
 };
 
 JSONGenerator["policyOnCompletion"] = function (block) {
     var statement_onCompletion = block.getFieldValue('policyOnCompletion');
-    var code = '"condition": "' + statement_onCompletion + '",\n';
+    var code = '' + statement_onCompletion + ',';
     return code;
 };
 
