@@ -1,25 +1,22 @@
 import './App.css';
-import React from 'react';
-
-//import BlocklyJS from 'blockly/javascript';
-//import './blocks/customblocks';
-//import './generator/generator';
-
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 //pages
 import PolicyProgrammingPage from './Pages/PolicyProgrammingPage';
 import CanteenPage from './Pages/CanteenPage';
 import TableConfigPage from './Pages/TableConfigPage';
 
+import {mqttConnect, subscribe, onMessage, unsubscribe} from './MQTT/mqtt';
+
 const App = () => {
 
-  // generateCode = () => {
-  //   var code = BlocklyJS.workspaceToCode(
-  //     this.simpleWorkspace.current.workspace
-  //   );
-  //   console.log(code);
-  // }
+  useEffect(() => {
+    const client = mqttConnect();
+    subscribe(client, 'test');
+    onMessage(client);
+    //unsubscribe(client, 'sensors/+/temperature/+')
+  })
 
   return (
     <Router>

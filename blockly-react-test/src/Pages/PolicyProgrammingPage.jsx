@@ -10,6 +10,8 @@ import JSONGenerator from "../generator/generator"
 import BlocklyComponent, { Block, Value, Field, Shadow, Category } from '../Blockly';
 import PolicyList from "../Components/PolicyList";
 
+import {mqttConnect, subscribe, onMessage, unsubscribe} from '../MQTT/mqtt';
+
 const PolicyProgrammingPage = () => {
 
     const simpleWorkspace = useRef(null);
@@ -23,7 +25,8 @@ const PolicyProgrammingPage = () => {
         var code = JSONGenerator.workspaceToCode(
           simpleWorkspace.current
         );
-        console.log(code);
+        const client = mqttConnect();
+        client.publish('test', code)
       }
 
     return (

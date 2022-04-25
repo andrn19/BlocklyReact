@@ -7,7 +7,6 @@ const PolicyQue = () => {
     const onDragEnd = (param) => {
         const srcI = param.source.index;
         const desI = param.destination.index;
-        console.log(param)
         if (desI != null) {
             list.splice(desI, 0, list.splice(srcI, 1)[0]);
             List.saveList(list);
@@ -17,13 +16,13 @@ const PolicyQue = () => {
     const list = List.getList();
 
     const stateStyle = (state) => {
-        if(state == "Done") {
-            return { color: "lightgreen"}
+        if(state === "Done") {
+            return { color: "lightgreen" }
         }
-        if(state == "Currently") {
+        if(state === "Currently") {
             return { color: "lightblue" }
         }
-        if(state == "Rejected") {
+        if(state === "Rejected") {
             return { color: "red" }
         }
         else {
