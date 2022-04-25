@@ -2,89 +2,69 @@ import * as Blockly from 'blockly/core';
 
 var blocks = [
     {
-        "type": "template",
-        "message0": "Create New Policy %1 %2 %3 %4 Actions %5 Conditions %6 Handling %7 On object %8",
+        "type": "ClearingPolicy",
+        "message0": "Clearing Policy %1 Name your policy: %2 %3 Actions %4 Conditions %5 Handling %6 Objects %7",
         "args0": [
           {
             "type": "input_dummy"
           },
           {
-            "type": "field_label_serializable",
-            "name": "NAME",
-            "text": "Give it a name"
-          },
-          {
             "type": "field_input",
-            "name": "NAME",
-            "text": "<Name>"
+            "name": "POLICYNAME",
+            "text": "<name>"
           },
           {
             "type": "input_dummy"
           },
           {
             "type": "input_statement",
-            "name": "NAME"
+            "name": "Actions"
           },
           {
             "type": "input_statement",
-            "name": "NAME"
+            "name": "Conditions"
           },
           {
             "type": "input_statement",
-            "name": "NAME"
+            "name": "Handling"
           },
           {
             "type": "input_statement",
-            "name": "NAME"
+            "name": "Objects"
           }
         ],
         "colour": 120,
         "tooltip": "",
         "helpUrl": ""
-    },
-    {
-        "type": "schedulestart",
-        "message0": "schedule to start %1 %2",
+      },
+      {
+        "type": "CleaningPolicy",
+        "message0": "Cleaning Policy %1 Name your policy: %2 %3 Actions %4 Conditions %5",
         "args0": [
-            {
-                "type": "input_dummy"
-            },
-            {
-                "type": "input_statement",
-                "name": "scheduleStart"
-            }
+          {
+            "type": "input_dummy"
+          },
+          {
+            "type": "field_input",
+            "name": "POLICYNAME",
+            "text": "<name>"
+          },
+          {
+            "type": "input_dummy"
+          },
+          {
+            "type": "input_statement",
+            "name": "Actions"
+          },
+          {
+            "type": "input_statement",
+            "name": "Conditions"
+          },
         ],
-        "previousStatement": null,
-        "nextStatement": null,
-        "colour": 270,
-        "tooltip": "",
-    },
-    {
-        "type": "actions",
-        "message0": "Actions to be performed %1 %2",
-        "args0": [
-            {
-                "type": "input_dummy"
-            },
-            {
-                "type": "input_statement",
-                "name": "actions"
-            }
-        ],
-        "previousStatement": null,
-        "nextStatement": null,
-        "colour": 270,
-        "tooltip": "",
-    },
-    {
-        "type": "goto",
-        "message0": "Go To Table",
-        "previousStatement": null,
-        "nextStatement": null,
-        "colour": 0,
+        "colour": 120,
         "tooltip": "",
         "helpUrl": ""
-    },
+      },
     {
         "type": "plate",
         "message0": "Plate",
@@ -148,6 +128,15 @@ var blocks = [
         "tooltip": "",
         "helpUrl": ""
     },
+    {
+        "type": "allobjects",
+        "message0": "Clear All Objects",
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 65,
+        "tooltip": "",
+        "helpUrl": ""
+      },
     {
         "type": "go to",
         "message0": "Go to",
@@ -244,7 +233,7 @@ var blocks = [
         "args0": [
           {
             "type": "field_input",
-            "name": "NAME",
+            "name": "startTime",
             "text": "00:00"
           }
         ],
@@ -260,7 +249,7 @@ var blocks = [
         "args0": [
           {
             "type": "field_input",
-            "name": "NAME",
+            "name": "peopleCount",
             "text": "0"
           }
         ],
@@ -276,7 +265,7 @@ var blocks = [
         "args0": [
           {
             "type": "field_input",
-            "name": "NAME",
+            "name": "objectCount",
             "text": "0"
           }
         ],
@@ -286,6 +275,35 @@ var blocks = [
         "tooltip": "",
         "helpUrl": ""
     },
+    {
+        "type": "policyOnCompletion",
+        "message0": "On completion %1",
+        "args0": [
+          {
+            "type": "field_dropdown",
+            "name": "policyOnCompletion",
+            "options": [
+              [
+                "Return to charger",
+                "1"
+              ],
+              [
+                "Go to next task",
+                "2"
+              ],
+              [
+                "Idle",
+                "3"
+              ]
+            ]
+          }
+        ],
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 260,
+        "tooltip": "",
+        "helpUrl": ""
+      },
     {
         "type": "slow",
         "message0": "Slow",
@@ -298,6 +316,15 @@ var blocks = [
     {
         "type": "careful",
         "message0": "Careful",
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 20,
+        "tooltip": "",
+        "helpUrl": ""
+    },
+    {
+        "type": "normal",
+        "message0": "Normal",
         "previousStatement": null,
         "nextStatement": null,
         "colour": 20,

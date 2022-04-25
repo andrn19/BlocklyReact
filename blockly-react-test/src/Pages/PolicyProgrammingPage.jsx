@@ -34,12 +34,11 @@ const PolicyProgrammingPage = () => {
             <PolicyList generateCode={generateCode}/>
             <BlocklyComponent ref={simpleWorkspace} readOnly={false} trashcan={true} media={'media/'} move={{ scrollbars: true, drag: true, wheel: true }}>
                 <Category name="Policies" colour="120">
-                    <Block type="template" />
-                    <Block type="schedulestart" />
-                    <Block type="actions" />
-                    <Block type="goto" />
+                    <Block type="ClearingPolicy" />
+                    <Block type="CleaningPolicy" />
                 </Category>
                 <Category name="Table Objects" colour="65">
+                    <Block type="allobjects" />
                     <Block type="plate" />
                     <Block type="napkin" />
                     <Block type="utensil" />
@@ -52,11 +51,13 @@ const PolicyProgrammingPage = () => {
                     <Block type="time start" />
                     <Block type="people count" />
                     <Block type="object count" />
+                    <Block type="policyOnCompletion" />
                 </Category>
                 <Category name="Actions" colour="330">
                     <Block type="go to" />
                     <Block type="clean" />
                     <Block type="clear" />
+                    <Block type="clear object" />
                     <Block type="clear and clean" />
                     <Block type="scan" />
                     <Block type="start" />
@@ -67,8 +68,8 @@ const PolicyProgrammingPage = () => {
                 <Category name="Handling" colour="20">
                     <Block type="slow" />
                     <Block type="careful" />
+                    <Block type="normal" />
                 </Category>
-
             </BlocklyComponent>
         </div>
     );
