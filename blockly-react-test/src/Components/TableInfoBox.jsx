@@ -7,19 +7,13 @@ const TableInfoBox = () => {
    
     const { data } = useEmitter(); 
     
-    const [policies, setShownPolicies]=useState( 
-        []
-    );
+    const [policies, setShownPolicies]=useState([]);
 
     useEffect(() => {
         if(typeof data === 'object') {
             setShownPolicies(arr => [...arr, data]);
         } 
     }, [data]);
-
-    //useEffect(() => {
-    //    console.log(policies)
-    //})
     
     const hi = () => {
         policies.pop();

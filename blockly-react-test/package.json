@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "blockly": "^7.20211209.4",
     "bootstrap": "^5.1.3",
+    "json-simple": "^0.9.6",
     "mqtt": "^4.3.7",
     "react": "^17.0.2",
     "react-beautiful-dnd": "^13.1.0",

@@ -24,13 +24,13 @@ const TableConfigPage = () => {
 
     return (
         <div>
+            <center><h1>Canteen</h1></center>
             <button onClick={toProgramming} id="ProgramButton">
                 Program
             </button>
             <button onClick={toMain} id="BackButton">
                 &laquo; Back
             </button>
-            <center><h1>Canteen</h1></center>
             <Emitter>
             <TableInfoBox />
             <DragNDropBoard id="board-1"></DragNDropBoard>
