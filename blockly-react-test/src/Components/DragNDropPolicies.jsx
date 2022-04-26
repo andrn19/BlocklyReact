@@ -2,7 +2,7 @@ import React from "react";
 import { useEmitter } from './Emitter';
 import { DragDropContainer} from 'react-drag-drop-container';
 
-function DragNDropPolicies(props) {
+function DragNDropPolicies() {
   
     const policyArray = [
         {
@@ -30,20 +30,21 @@ function DragNDropPolicies(props) {
         setDataEvent(`${e.dropData}`);
     };
 
-    return (
-        <div>  
-            <div id={props.id} > 
+    return ( 
+            <div> 
                 <h1 style={{fontSize: 20, paddingLeft: 25}}>Drag and drop policies</h1>
-                {policyArray.map((policy) => (
+                <ul>
+                    {policyArray.map((policy) => (
                     <DragDropContainer 
                         targetKey="foo"  
                         dragData={policy.PolicyName}
-                        onDrop={dropHandler}>                  
-                    <ul className={'policies'} > {policy.PolicyName} </ul> 
+                        onDrop={dropHandler}
+                        key={policy.Id}>                  
+                    <ul className={'policies'}> {policy.PolicyName} </ul> 
                     </DragDropContainer>
-                ))} 
+                    ))}
+                </ul>
             </div>
-        </div>
     )
 }
 

@@ -33,7 +33,7 @@ const TableConfigPage = () => {
             <center><h1>Canteen</h1></center>
             <Emitter>
             <TableInfoBox />
-            <right><DragNDropBoard id="board-1"></DragNDropBoard></right>
+            <DragNDropBoard id="board-1"></DragNDropBoard>
             <center><CanteenOverview/></center>
             </Emitter>
             
