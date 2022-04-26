@@ -4,8 +4,6 @@ import { FaWrench } from "react-icons/fa"
 import "../Components/ComponentStyles.css";
 
 //components
-import TableLog from "../Components/TableLog";
-import StatusQue from "../Components/StatusQue";
 import CanteenOverview from "../Components/CanteenOverview";
 import Emitter from "../Components/Emitter";
 import PolicyQue from "../Components/policyQue";

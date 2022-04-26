@@ -7,15 +7,14 @@ import PolicyProgrammingPage from './Pages/PolicyProgrammingPage';
 import CanteenPage from './Pages/CanteenPage';
 import TableConfigPage from './Pages/TableConfigPage';
 
-import {mqttConnect, subscribe, onMessage, unsubscribe} from './MQTT/mqtt';
+import { onMessage, subscribe } from './MQTT/mqtt';
 
 const App = () => {
 
   useEffect(() => {
-    const client = mqttConnect();
-    subscribe(client, 'test');
-    onMessage(client);
-    //unsubscribe(client, 'sensors/+/temperature/+')
+    subscribe('fcs/fcClientTopic')
+    subscribe('fcs/fcServiceTopic')
+    onMessage()
   })
 
   return (

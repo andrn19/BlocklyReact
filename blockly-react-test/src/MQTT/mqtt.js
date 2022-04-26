@@ -12,30 +12,36 @@ const options = {
     reconnectTimeout: 2000,
 };
 
+var client;
 
-export function mqttConnect() {
-    const client = mqtt.connect(url, options);
-    return client
+export function getClient() {
+    return client;
 }
 
-export function subscribe(client, topic) {
+export function mqttConnect() {
+    client = mqtt.connect(url, options);
+}
+
+export function subscribe(topic) {
     client.subscribe(topic);
 }
 
-export function unsubscribe(client, topic) {
+export function unsubscribe(topic) {
     client.unsubscribe(topic);
 }
 
 //skal nok laves i hvert component der skal bruge det
-export function onMessage(client) {
-    client.on("message", (topic, message) => {   
+export function onMessage() {
+    client.on("message", (topic, message) => {
+
         var msg = message.toString()
         var jsonMSG = jsonsimple.decode(msg)
-        return jsonMSG
+        console.log(msg)
+
     });
 }
 
-export function closeConnection(client) {
+export function closeConnection() {
     client.end();
 }
 

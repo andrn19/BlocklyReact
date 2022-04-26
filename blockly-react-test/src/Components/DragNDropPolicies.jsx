@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useEmitter } from './Emitter';
 import { DragDropContainer} from 'react-drag-drop-container';
+import { subscribe } from '../MQTT/mqtt'
+
 
 function DragNDropPolicies(props) {
   
@@ -23,7 +25,11 @@ function DragNDropPolicies(props) {
         },
         
     ];
-
+    
+    useEffect(() => {
+        
+    })
+    
     const { setDataEvent } = useEmitter();
     
     const dropHandler = (e) => {  

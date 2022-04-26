@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import jsonSimple from "json-simple";
 import Blockly from 'blockly/core';
 
 
@@ -11,7 +12,7 @@ import JSONGenerator from "../generator/generator";
 import BlocklyComponent, { Block, Value, Field, Shadow, Category } from '../Blockly';
 import PolicyList from "../Components/PolicyList";
 
-import {mqttConnect, closeConnection} from '../MQTT/mqtt';
+import { getClient } from '../MQTT/mqtt';
 
 const PolicyProgrammingPage = () => {
 
@@ -24,20 +25,26 @@ const PolicyProgrammingPage = () => {
 
     const generateCode = () => {
         var code = JSONGenerator.workspaceToCode(
-          simpleWorkspace.current
+            simpleWorkspace.current
         );
-        const client = mqttConnect();
-        client.publish('test', code);
-        closeConnection(client);
-      }
+        const policyObj = jsonSimple.decode(code)
+        const objToSend = {
+            "doc": {policyObj},
+            "frame": {},
+            "schema": {},
+        }
+        const msgToSend = JSON.stringify(objToSend)
+        const client = getClient();
+        client.publish('fcs/fcServiceTopic', msgToSend);
+    }
 
     return (
         <div>
             <button onClick={toConfig} id="BackButton">
                 &laquo; Back
             </button>
-            <PolicyList generateCode={generateCode}/>
-            <BlocklyComponent ref={simpleWorkspace} readOnly={false} trashcan={true} media={'media/'} move={{ scrollbars: true, drag: true, wheel: true }}>
+            <PolicyList generateCode={generateCode} />
+            <BlocklyComponent readOnly={false} trashcan={true} media={'media/'} move={{ scrollbars: true, drag: true, wheel: true }}>
                 <Category name="Policies" colour="120">
                     <Block type="ClearingPolicy" />
                     <Block type="CleaningPolicy" />
