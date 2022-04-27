@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Blockly from 'blockly/core';
 
 import "./ComponentStyles.css";
 
 const PolicyList = (props) => {
+
+    const [savedPolicies, setSavedPolicies] = useState([]);
+
+
+    const getSavedPolicies = () => {
+        const storedPolicies = localStorage.getItem("savedPolicies")
+        console.log(storedPolicies)
+        if (storedPolicies.length > 0) {
+            for (var Policy in storedPolicies) {
+                const policyXML = Blockly.Xml.textToDom(storedPolicies[Policy])
+                setSavedPolicies(arr => [...arr, policyXML])
+            }
+        }
+    }
+
+    // useEffect(() => {
+    //     getSavedPolicies()
+    // }, [savedPolicies])
+
+    useEffect(() => {
+        getSavedPolicies()
+        console.log(savedPolicies)
+    })
 
     return (
         <div className="SavedPolicyDiv">
@@ -12,10 +36,10 @@ const PolicyList = (props) => {
                     <p>Policy</p>
                 </li>
             </div>
-            <button className="saveBtn" onClick={props.generateCode}>
+            <button className="saveBtn" onClick={props.savePolicy}>
                 Save
             </button>
-            <button className="editBtn">
+            <button className="editBtn" onClick={props.editPolicy}>
                 Edit
             </button>
         </div>

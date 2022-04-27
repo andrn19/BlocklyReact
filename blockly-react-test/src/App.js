@@ -7,14 +7,14 @@ import PolicyProgrammingPage from './Pages/PolicyProgrammingPage';
 import CanteenPage from './Pages/CanteenPage';
 import TableConfigPage from './Pages/TableConfigPage';
 
-import { onMessage, subscribe } from './MQTT/mqtt';
+import { subscribe } from './MQTT/mqtt';
 
 const App = () => {
 
   useEffect(() => {
-    subscribe('fcs/fcClientTopic')
-    subscribe('fcs/fcServiceTopic')
-    onMessage()
+    // subscribe('fcs/fcClientTopic')
+    // subscribe('fcs/fcServiceTopic')
+    // onMessage()
   })
 
   return (

@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import jsonSimple from "json-simple";
 import Blockly from 'blockly/core';
+import jsonSimple from 'json-simple'
 
 
 import "../Components/ComponentStyles.css";
@@ -16,26 +16,49 @@ import { getClient } from '../MQTT/mqtt';
 
 const PolicyProgrammingPage = () => {
 
-    const simpleWorkspace = useRef(null);
+    const [policiesToSave, setSavedPolicies] = useState([])
+    const [workspace, setWorkspace] = useState();
+
     let navigate = useNavigate();
 
     const toConfig = () => {
         navigate("/config");
     }
 
-    const generateCode = () => {
+    useEffect(() => {
+        setWorkspace(Blockly.getMainWorkspace())
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('savedPolicies', policiesToSave)
+    }, [policiesToSave])
+
+    const editPolicy = () => {
+
+    }
+
+    const savePolicy = () => {
         var code = JSONGenerator.workspaceToCode(
-            simpleWorkspace.current
+            workspace
         );
-        const policyObj = jsonSimple.decode(code)
-        const objToSend = {
-            "doc": {policyObj},
-            "frame": {},
-            "schema": {},
+        //savaing the xml for the workspace so user can save created blocks
+        if (code.length > 0) {
+            var xml = Blockly.Xml.workspaceToDom(workspace);
+            var xmlText = Blockly.Xml.domToText(xml)
+            console.log(xmlText)
+            setSavedPolicies(arr => [...arr, xmlText])
+            workspace.clear()
         }
-        const msgToSend = JSON.stringify(objToSend)
-        const client = getClient();
-        client.publish('fcs/fcServiceTopic', msgToSend);
+        //mqtt publishing the generated code
+        // if (code.length > 0) {
+        //     const policyObj = jsonSimple.decode(code)
+        //     const objToSend = {
+        //         "doc": { policyObj },
+        //     }
+        //     const msgToSend = JSON.stringify(objToSend)
+        //     const client = getClient();
+        //     client.publish('fcs/fcServiceTopic', msgToSend);
+        // }
     }
 
     return (
@@ -43,7 +66,7 @@ const PolicyProgrammingPage = () => {
             <button onClick={toConfig} id="BackButton">
                 &laquo; Back
             </button>
-            <PolicyList generateCode={generateCode} />
+            <PolicyList savePolicy={savePolicy} editPolicy={editPolicy} />
             <BlocklyComponent readOnly={false} trashcan={true} media={'media/'} move={{ scrollbars: true, drag: true, wheel: true }}>
                 <Category name="Policies" colour="120">
                     <Block type="ClearingPolicy" />

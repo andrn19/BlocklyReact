@@ -30,6 +30,30 @@ const List = {
         policy: "Clear",
         lastClean: "10:00",
       },
+      {
+        table: 6,
+        tableStatus: "Waiting",
+        policy: "Clear",
+        lastClean: "10:00",
+      },
+      {
+        table: 7,
+        tableStatus: "Waiting",
+        policy: "Clear",
+        lastClean: "10:00",
+      },
+      {
+        table: 8,
+        tableStatus: "Waiting",
+        policy: "Clear",
+        lastClean: "10:00",
+      },
+      {
+        table: 9,
+        tableStatus: "Waiting",
+        policy: "Clear",
+        lastClean: "10:00",
+      },
     ],
     getList: function () {
       return (
