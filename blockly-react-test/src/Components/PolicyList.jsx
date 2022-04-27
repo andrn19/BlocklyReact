@@ -9,23 +9,24 @@ const PolicyList = (props) => {
 
 
     const getSavedPolicies = () => {
-        const storedPolicies = localStorage.getItem("savedPolicies")
-        console.log(storedPolicies)
-        if (storedPolicies.length > 0) {
-            for (var Policy in storedPolicies) {
-                const policyXML = Blockly.Xml.textToDom(storedPolicies[Policy])
-                setSavedPolicies(arr => [...arr, policyXML])
-            }
+        const storedData = localStorage.getItem("savedPolicies")
+        console.log(storedData)
+        if (storedData !== null && storedData.length > 0) {
+            const storedPolicies = storedData.split("nextBlock")
+            console.log(storedPolicies)
+            // for (var Policy in storedPolicies) {
+            //     const policyXML = Blockly.Xml.textToDom(storedPolicies[Policy])
+            //     setSavedPolicies(arr => [policyXML])
+            // }
         }
     }
 
     // useEffect(() => {
-    //     getSavedPolicies()
+    //     console.log(savedPolicies)
     // }, [savedPolicies])
 
     useEffect(() => {
         getSavedPolicies()
-        console.log(savedPolicies)
     })
 
     return (

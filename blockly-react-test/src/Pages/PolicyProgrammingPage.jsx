@@ -45,8 +45,8 @@ const PolicyProgrammingPage = () => {
         if (code.length > 0) {
             var xml = Blockly.Xml.workspaceToDom(workspace);
             var xmlText = Blockly.Xml.domToText(xml)
-            console.log(xmlText)
-            setSavedPolicies(arr => [...arr, xmlText])
+            console.log(xml)
+            setSavedPolicies(arr => [...arr, xmlText + "nextBlock"])
             workspace.clear()
         }
         //mqtt publishing the generated code
