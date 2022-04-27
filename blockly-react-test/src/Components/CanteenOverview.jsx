@@ -19,7 +19,7 @@ function Canteen(props) {
     };
 
     return (
-                <div class="container">
+                <div className="container">
                     <img src={image}/>
                     <div style={{ position: "absolute", top: "3%", left: "4%"}}>
                         <img src={image5}></img>

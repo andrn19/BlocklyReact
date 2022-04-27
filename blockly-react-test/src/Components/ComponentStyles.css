@@ -223,6 +223,7 @@
 /* Drag and Drop Style */
 
 .dragndropview {
+    overflow-y: scroll;
     background-color: white;
     width: 18ch;
     height: 50vh;
@@ -235,14 +236,10 @@
 
 .dragndropview .policies {
     position: relative;
-    left: 45%;
-    cursor: pointer;
     background-color: #5B6C80;
     margin-bottom: 5px;
     margin-right: 5px;
     padding: 15px;
-
-    color: white;
 }
 
 /* policyQue list */

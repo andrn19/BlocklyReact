@@ -21,7 +21,7 @@ JSONGenerator['ClearingPolicy'] = function (block) {
     var statements_actions = JSONGenerator.statementToCode(block, 'actions');
     var statements_objects = JSONGenerator.statementToCode(block, 'objects');
     var statements_handling = JSONGenerator.statementToCode(block, 'handling');
-    var code = '{\n "@type": "ClearingPolicy",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "",\n "condition": "' + statements_condition + '",\n "vars": "",\n "action": "' + statements_actions + '",\n "handling": "' + statements_handling + '",\n "policyOn": [\n {\n "@type": "' + statements_objects + '",\n "name": "",\n "desciption":""\n }\n ],\n "policyIn": {\n "@type": "",\n "name": "",\n "desciption":""\n }\n }';
+    var code = '{\n "@type": "ClearingPolicy",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "",\n "condition": "'+statements_condition + '",\n "vars": "",\n "action": "' + statements_actions + '",\n "handling": "' + statements_handling + '",\n "policyOn": [\n {\n "@type": "' + statements_objects + '",\n "name": "",\n "desciption":""\n }\n ],\n "policyIn": {\n "@type": "",\n "name": "",\n "desciption":""\n }\n }';
     return code;
 };
 
