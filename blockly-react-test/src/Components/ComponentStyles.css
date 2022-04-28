@@ -1,5 +1,5 @@
 #ProgramButton {
-    background-color: rgb(164, 209, 202);
+    background-color: #9375F0;
     color: black;
     padding: 5px 15px;
     border-radius: 5px;
@@ -12,7 +12,7 @@
 }
 
 #BackButton {
-    background-color: rgb(164, 209, 202);
+    background-color: #9375F0;
     color: black;
     padding: 5px 15px;
     border-radius: 5px;
@@ -32,7 +32,7 @@
     width: 20%;
     right: 0%;
     color: black;
-    background-color: rgb(143, 205, 209);
+    background-color: #5B6C80;
     display: flex;
     justify-content: center;
 }
@@ -53,17 +53,26 @@
     position: fixed;
 }
 
-.SavedPolicyDiv .PolicyListDiv {
+.SavedPolicyDiv .PolicyList {
     position: fixed;
-    top: 10%;
+    justify-content: center;
+    top: 8%;
+    width: 14%;
     height: 80%;
-    width: 17%;
-    color: black;
-    background-color: rgb(255, 255, 255);
+    max-width: fit-content;
+    padding: .5rem .5rem 1rem;
+    max-height: 29rem;
+    overflow-y: scroll;
 }
 
-.SavedPolicyDiv .PolicyListDiv .PolicyList {
-    
+.policies {
+    color: white;
+    position: relative;
+    background-color: #9375F0;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding: 10px;
+    width: 100%;
 }
 /* The policy list in programming page end */
 
@@ -284,3 +293,4 @@
     position: absolute;
     left: 50%;
 }
+

@@ -10,39 +10,40 @@ const PolicyList = (props) => {
 
     const getSavedPolicies = () => {
         const storedData = localStorage.getItem("savedPolicies");
-        //console.log(storedData)
         if (storedData !== null && storedData.length > 0) {
-                const storedPolicies = storedData.split(/(?=<xml)/g);
-                const ss = storedPolicies.map(string => string.replaceAll('>,', '>')) ;
-                console.log(ss)
-            } 
-            // for (var Policy in storedPolicies) {
-            //     const policyXML = Blockly.Xml.textToDom(storedPolicies[Policy])
-            //     setSavedPolicies(arr => [policyXML])
-            // }
-        
+            if (savedPolicies !== []) {
+                setSavedPolicies([])
+            }
+            const storedPolicies = storedData.split(/(?=<xml)/g);
+            const sp = storedPolicies.map(string => string.replaceAll('>,', '>'));
+            for (var Policy in sp) {
+                const policyXML = Blockly.Xml.textToDom(sp[Policy])
+                setSavedPolicies(arr => [...arr, policyXML])
+            }
+        }
     }
 
     // useEffect(() => {
     //     console.log(savedPolicies)
     // }, [savedPolicies])
 
-    useEffect(() => {
+    const saveClick = () => {
+        props.savePolicy()
         getSavedPolicies()
-    })
+    }
 
     return (
         <div className="SavedPolicyDiv">
             <h3><center>Saved Policies</center></h3>
-            <div className="PolicyListDiv">
-                <li className="PolicyList">
-                    <p>Policy</p>
-                </li>
-            </div>
-            <button className="saveBtn" onClick={props.savePolicy}>
+            <ul className="PolicyList" >
+                {savedPolicies.map((blockXml) => (
+                    <button className="policies">{blockXml.getElementsByTagName("field")[0].textContent}</button>
+                ))}
+            </ul>
+            <button className="saveBtn" onClick={saveClick}>
                 Save
             </button>
-            <button className="editBtn" onClick={props.editPolicy}>
+            <button className="editBtn" onClick={props.editPolicy} >
                 Edit
             </button>
         </div>

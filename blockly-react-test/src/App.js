@@ -19,11 +19,11 @@ const App = () => {
 
   return (
     <Router>
-      <Routes>
-        <Route exact path="/" element={<CanteenPage />} />
-        <Route path="/config" element={<TableConfigPage />} />
-        <Route path="/programming" element={<PolicyProgrammingPage />} />
-      </Routes>
+        <Routes>
+          <Route exact path="/" element={<CanteenPage />} />
+          <Route path="/config" element={<TableConfigPage />} />
+          <Route path="/programming" element={<PolicyProgrammingPage />} />
+        </Routes>
     </Router>
   );
 }
