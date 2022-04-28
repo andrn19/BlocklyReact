@@ -41,12 +41,13 @@ const PolicyProgrammingPage = () => {
         var code = JSONGenerator.workspaceToCode(
             workspace
         );
-        //savaing the xml for the workspace so user can save created blocks
+        //saving the xml for the workspace so user can save created blocks
         if (code.length > 0) {
             var xml = Blockly.Xml.workspaceToDom(workspace);
-            var xmlText = Blockly.Xml.domToText(xml)
-            console.log(xml)
-            setSavedPolicies(arr => [...arr, xmlText + "nextBlock"])
+            var xmlText = Blockly.Xml.domToText(xml);
+            //console.log(xml)
+            setSavedPolicies(arr => [...arr, xmlText])
+            //console.log(policiesToSave)
             workspace.clear()
         }
         //mqtt publishing the generated code
