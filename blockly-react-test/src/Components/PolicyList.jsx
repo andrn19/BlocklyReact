@@ -6,7 +6,11 @@ import "./ComponentStyles.css";
 const PolicyList = (props) => {
 
     const [savedPolicies, setSavedPolicies] = useState([]);
+    const [selected, setSelected] = useState()
 
+    useEffect(() => {
+        console.log(selected)
+    })
 
     const getSavedPolicies = () => {
         const storedData = localStorage.getItem("savedPolicies");
@@ -23,27 +27,29 @@ const PolicyList = (props) => {
         }
     }
 
-    // useEffect(() => {
-    //     console.log(savedPolicies)
-    // }, [savedPolicies])
-
     const saveClick = () => {
         props.savePolicy()
         getSavedPolicies()
+    }
+
+    const policySelect = (policyXML) => {
+        setSelected(policyXML)
     }
 
     return (
         <div className="SavedPolicyDiv">
             <h3><center>Saved Policies</center></h3>
             <ul className="PolicyList" >
-                {savedPolicies.map((blockXml) => (
-                    <button className="policies">{blockXml.getElementsByTagName("field")[0].textContent}</button>
+                {savedPolicies.map((blockXml, id) => (
+                    <button className="policies" key={id} onClick={() => policySelect(blockXml)}>
+                        {blockXml.getElementsByTagName("field")[0].textContent}
+                    </button>
                 ))}
             </ul>
             <button className="saveBtn" onClick={saveClick}>
                 Save
             </button>
-            <button className="editBtn" onClick={props.editPolicy} >
+            <button className="editBtn" onClick={() => props.editPolicy(selected)} > 
                 Edit
             </button>
         </div>

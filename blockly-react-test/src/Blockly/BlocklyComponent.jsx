@@ -51,8 +51,11 @@ const BlocklyComponent = (props) => {
         setWorkspace(primaryWorkspace);
     }, []);
 
-    const editPolicy = () => {
-
+    const editPolicy = (xml) => {
+        console.log(xml)
+        if(xml !== undefined){
+            Blockly.Xml.domToWorkspace(xml, workspace)
+        }
     }
 
     const savePolicy = () => {
