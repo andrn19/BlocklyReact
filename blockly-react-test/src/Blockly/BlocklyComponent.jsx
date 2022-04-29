@@ -54,7 +54,7 @@ const BlocklyComponent = (props) => {
     const editPolicy = (xml) => {
         console.log(xml)
         if(xml !== undefined){
-            Blockly.Xml.domToWorkspace(xml, workspace)
+            Blockly.Xml.clearWorkspaceAndLoadFromXml(xml, workspace)
         }
     }
 
