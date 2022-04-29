@@ -26,9 +26,12 @@ const BlocklyComponent = (props) => {
             const localPolicies = localStorage.getItem("savedPolicies")
             const storedPolicies = localPolicies.split(/(?=<xml)/g);
             const sp = storedPolicies.map(string => string.replaceAll('>,', '>'));
+            const ts = []
             for (var Policy in sp) {
-                setSavedPolicies(arr => [...arr, sp[Policy]])
+                console.log(sp[Policy])
+                ts.push(sp[Policy])
             }
+            setSavedPolicies(ts)
         }
         else {
             localStorage.setItem('savedPolicies', policiesToSave)

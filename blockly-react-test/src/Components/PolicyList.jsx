@@ -8,9 +8,12 @@ const PolicyList = (props) => {
     const [savedPolicies, setSavedPolicies] = useState([]);
     const [selected, setSelected] = useState()
 
+    
+    
     useEffect(() => {
-        console.log(selected)
-    })
+        getSavedPolicies()
+        console.log(savedPolicies)
+    }, [])
 
     const getSavedPolicies = () => {
         const storedData = localStorage.getItem("savedPolicies");
@@ -46,7 +49,7 @@ const PolicyList = (props) => {
                     </button>
                 ))}
             </ul>
-            <button className="saveBtn" onClick={saveClick}>
+            <button className="saveBtn" onClick={() => saveClick()}>
                 Save
             </button>
             <button className="editBtn" onClick={() => props.editPolicy(selected)} > 
