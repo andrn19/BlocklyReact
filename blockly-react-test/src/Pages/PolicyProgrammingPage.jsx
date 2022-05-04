@@ -1,7 +1,5 @@
-import React, { useEffect, useContext, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import Blockly from 'blockly/core';
-import jsonSimple from 'json-simple'
 
 
 import "../Components/ComponentStyles.css";
@@ -24,9 +22,13 @@ const PolicyProgrammingPage = () => {
                 &laquo; Back
             </button>
             <BlocklyComponent readOnly={false} trashcan={true} media={'media/'} move={{ scrollbars: true, drag: true, wheel: true }}>
-                <Category name="Policies" colour="120">
+                <Category name="Table Policies" colour="120">
+                    <Block type="SpecificClearingPolicy" />
                     <Block type="ClearingPolicy" />
                     <Block type="CleaningPolicy" />
+                </Category>
+                <Category name="Object Policies" colour="120">
+                    <Block type="objectpolicy" />
                 </Category>
                 <Category name="Cleaning Actions" colour="330">
                     <Block type="go to" />
@@ -41,7 +43,6 @@ const PolicyProgrammingPage = () => {
                 <Category name="Clearing Actions" colour="330">
                     <Block type="go to" />
                     <Block type="clear" />
-                    <Block type="clear object" />
                     <Block type="clear and clean" />
                     <Block type="scan" />
                     <Block type="start" />

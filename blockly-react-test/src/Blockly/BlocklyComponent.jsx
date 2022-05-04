@@ -1,15 +1,16 @@
-import React, { useRef, createContext, useContext, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import './BlocklyComponent.css';
+import jsonSimple from "json-simple";
 
 import Blockly from 'blockly/core';
 import locale from 'blockly/msg/en';
 import 'blockly/blocks';
-import { useEffect } from 'react';
 
 import PolicyList from "../Components/PolicyList";
 import JSONGenerator from "../generator/generator";
 
 import { getClient } from '../MQTT/mqtt';
+import { Block } from "blockly";
 
 Blockly.setLocale(locale);
 
@@ -28,18 +29,16 @@ const BlocklyComponent = (props) => {
             const sp = storedPolicies.map(string => string.replaceAll('>,', '>'));
             const ts = []
             for (var Policy in sp) {
-                console.log(sp[Policy])
                 ts.push(sp[Policy])
             }
             setSavedPolicies(ts)
         }
-        else {
-            localStorage.setItem('savedPolicies', policiesToSave)
-        }
-    },[])
+    }, [])
 
     useEffect(() => {
-        localStorage.setItem('savedPolicies', policiesToSave)
+        if (policiesToSave.length > 0) {
+            localStorage.setItem('savedPolicies', policiesToSave)
+        }
     }, [policiesToSave])
 
     useEffect(() => {
@@ -56,7 +55,7 @@ const BlocklyComponent = (props) => {
 
     const editPolicy = (xml) => {
         console.log(xml)
-        if(xml !== undefined){
+        if (xml !== undefined) {
             Blockly.Xml.clearWorkspaceAndLoadFromXml(xml, workspace)
         }
     }
@@ -65,23 +64,45 @@ const BlocklyComponent = (props) => {
         var code = JSONGenerator.workspaceToCode(
             workspace
         );
+        //console.log(code)
+
         //saving the xml for the workspace so user can save created blocks
         if (code.length > 0) {
             var xml = Blockly.Xml.workspaceToDom(workspace);
-            var xmlText = Blockly.Xml.domToText(xml);
-            setSavedPolicies(arr => [...arr, xmlText])
-            workspace.clear()
+            //check if the saved block is already saved, if so update it to new one, else just add it
+            if (policiesToSave.length > 0) {
+                var policies = [...policiesToSave]
+                for (let ele of policies) {
+                    console.log(ele)
+                    var eleName = Blockly.Xml.textToDom(ele).getElementsByTagName("field")[0].textContent
+                    const nameOfSavedBlock = xml.getElementsByTagName("field")[0].textContent
+
+                    //check if the saved blocks name is already saved, if so update
+                    if (eleName === nameOfSavedBlock) {
+                        policies[policies.indexOf(ele)] = Blockly.Xml.domToText(xml)
+                        setSavedPolicies(policies)
+                        workspace.clear()
+                        break
+                    }
+                    if (eleName !== nameOfSavedBlock && ele === policies[policies.length - 1]) {
+                        policies.push(Blockly.Xml.domToText(xml))
+                        setSavedPolicies(policies)
+                        workspace.clear()
+                        break
+                    }
+                }
+            }
+            else {
+                var xmlText = Blockly.Xml.domToText(xml);
+                setSavedPolicies(arr => [...arr, xmlText])
+                workspace.clear()
+            }
+
+            //mqtt publishing the generated code
+            const objToSend = '{\n"doc": {\n' + code + '\n}\n}'
+            const client = getClient();
+            client.publish('fcs/fcServiceTopic', objToSend);
         }
-        //mqtt publishing the generated code
-        // if (code.length > 0) {
-        //     const policyObj = jsonSimple.decode(code)
-        //     const objToSend = {
-        //         "doc": { policyObj },
-        //     }
-        //     const msgToSend = JSON.stringify(objToSend)
-        //     const client = getClient();
-        //     client.publish('fcs/fcServiceTopic', msgToSend);
-        // }
     }
 
     const { children } = props;

@@ -12,10 +12,10 @@ import { subscribe } from './MQTT/mqtt';
 const App = () => {
 
   useEffect(() => {
-    // subscribe('fcs/fcClientTopic')
-    // subscribe('fcs/fcServiceTopic')
+    subscribe('fcs/fcClientTopic')
+    subscribe('fcs/fcServiceTopic')
     // onMessage()
-  })
+  },[])
 
   return (
     <Router>

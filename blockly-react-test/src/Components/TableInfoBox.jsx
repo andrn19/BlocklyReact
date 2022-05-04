@@ -22,7 +22,7 @@ const TableInfoBox = () => {
  
     const columns = [
             {
-                Header: 'Table Info',
+                Header: 'Applied Policies',
                 columns: [
                     {
                         Header: 'Table Nr.',
@@ -33,6 +33,7 @@ const TableInfoBox = () => {
                         accessor: 'policy',
                     },
                     {
+                        Header: 'Remove',
                         accessor: 'action',
                         Cell: () => (<button onClick={hi}>X</button>)
                     },

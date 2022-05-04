@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import List from "./data";
+import jsonSimple from "json-simple";
 
 const PolicyQue = () => {
+
+    const [policies, setPolicies] = useState([]);
+
+    // const query = '"@type": "scm:Table"'
+    // const frameToSend = {
+    //     "frame": { query }
+    // }
+
+    // useEffect(() => {
+    //     const client = getClient();
+    //     let isActive = true;
+    //     if (isActive) {
+    //         client.publish('fcs/fcServiceTopic', JSON.stringify(frameToSend))
+    //         client.on("message", (topic, message) => {
+    //             var msg = message.toString()
+    //             var jsonMSG = jsonSimple.decode(msg)
+    //             var policies = jsonMSG.@reverse.policyOn.name
+    //             setPolicies(policies)
+    //         });
+    //         console.log(policies)
+    //     }
+    //     return () => { isActive = false }
+    // }, []);
 
     const onDragEnd = (param) => {
         const srcI = param.source.index;
@@ -16,13 +40,13 @@ const PolicyQue = () => {
     const list = List.getList();
 
     const stateStyle = (state) => {
-        if(state === "Done") {
+        if (state === "Done") {
             return { color: "lightgreen" }
         }
-        if(state === "Currently") {
+        if (state === "Currently") {
             return { color: "lightblue" }
         }
-        if(state === "Rejected") {
+        if (state === "Rejected") {
             return { color: "red" }
         }
         else {
@@ -32,7 +56,7 @@ const PolicyQue = () => {
 
     return (
         <div className="queDiv">
-            <center style={{color: "white"}}><h2>Tasks</h2></center>
+            <center style={{ color: "white" }}><h2>Tasks</h2></center>
             <DragDropContext
                 onDragEnd={onDragEnd}>
                 <ul className="queList">
@@ -49,7 +73,7 @@ const PolicyQue = () => {
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}>
                                                 Table {item.table}: <span style={stateStyle(item.tableStatus)}>{item.tableStatus} {item.policy}</span><br />
-                                                <span style={{fontSize: 14, color: "darkgrey"}}> Last cleaned {item.lastClean}</span>
+                                                <span style={{ fontSize: 14, color: "darkgrey" }}> Last cleaned {item.lastClean}</span>
                                             </p>
                                         )}
                                     </Draggable>

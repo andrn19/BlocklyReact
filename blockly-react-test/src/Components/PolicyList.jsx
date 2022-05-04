@@ -12,8 +12,11 @@ const PolicyList = (props) => {
     
     useEffect(() => {
         getSavedPolicies()
-        console.log(savedPolicies)
     }, [])
+
+    // useEffect(() => {
+    //     console.log(savedPolicies)
+    // })
 
     const getSavedPolicies = () => {
         const storedData = localStorage.getItem("savedPolicies");
@@ -32,7 +35,7 @@ const PolicyList = (props) => {
 
     const saveClick = () => {
         props.savePolicy()
-        getSavedPolicies()
+        setTimeout(() => {getSavedPolicies()}, '100')
     }
 
     const policySelect = (policyXML) => {

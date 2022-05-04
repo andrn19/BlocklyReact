@@ -73,6 +73,7 @@
     margin-right: 5px;
     padding: 10px;
     width: 100%;
+    word-wrap: break-word;
 }
 /* The policy list in programming page end */
 

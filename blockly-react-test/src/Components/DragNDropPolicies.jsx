@@ -9,7 +9,7 @@ function DragNDropPolicies(props) {
 
     const [policies, setPolicies] = useState([]);
 
-    // const query = "SELECT * FROM SemanticDB WHERE @type='CleaningPolicy'"
+    // const query = '"@type": "scm:CleaningPolicy"\n "@type": "scm:ClearingPolicy"'
     // const frameToSend = {
     //     "frame": { query }
     // }
@@ -35,22 +35,20 @@ function DragNDropPolicies(props) {
         ]
     }
 
-    // useEffect(() => {
-    //     const client = getClient();
-    //     let isActive = true;
-    //     if (isActive) {
-    //         client.publish('fcs/fcServiceTopic', JSON.stringify(frameToSend))
-    //         client.on("message", (topic, message) => {
-    //             var msg = message.toString()
-    //             var jsonMSG = jsonSimple.decode(msg)
-    //             var policies = jsonMSG.policies
-    //             //console.log(policies)
-    //             setPolicies(policies)
-    //         });
-    //         console.log(policies)
-    //     }
-    //     return () => { isActive = false }
-    // }, []);
+    useEffect(() => {
+        const client = getClient();
+        let isActive = true;
+        if (isActive) {
+            client.publish('fcs/fcServiceTopic', JSON.stringify(frameToSend))
+            client.on("message", (topic, message) => {
+                var msg = message.toString()
+                var jsonMSG = jsonSimple.decode(msg)
+                var policies = jsonMSG.policies
+                setPolicies(policies)
+            });
+        }
+        return () => { isActive = false }
+    }, []);
 
     const { setDataEvent } = useEmitter();
 
