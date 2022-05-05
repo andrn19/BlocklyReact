@@ -62,7 +62,8 @@
     max-width: fit-content;
     padding: .5rem .5rem 1rem;
     max-height: 29rem;
-    overflow-y: scroll;
+    overflow-y: none;
+    overflow-x: hidden;
 }
 
 .policies {
@@ -75,7 +76,19 @@
     width: 100%;
     word-wrap: break-word;
 }
+
+.policies:focus {
+    color: white;
+    position: relative;
+    background-color: #53408b;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding: 10px;
+    width: 100%;
+    word-wrap: break-word;
+}
 /* The policy list in programming page end */
+
 
 
 /* Div for choosing method for tables box */
@@ -294,4 +307,3 @@
     position: absolute;
     left: 50%;
 }
-
