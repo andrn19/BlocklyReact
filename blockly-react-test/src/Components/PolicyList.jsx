@@ -62,7 +62,7 @@ const PolicyList = (props) => {
             <button className="saveBtn" onClick={() => saveClick()}>
                 Save
             </button>
-            <button className="editBtn" onClick={() => props.editClick(selected)} > 
+            <button className="editBtn" onClick={() => props.editPolicy(selected)} > 
                 Edit
             </button>
             <button className="deleteBtn" onClick={() => deleteClick()} > 
