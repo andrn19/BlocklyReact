@@ -60,6 +60,30 @@ const BlocklyComponent = (props) => {
         }
     }
 
+    const deletePolicy = (xml) => {
+            console.log(xml)
+            if (policiesToSave.length > 0) {
+                var policies = [...policiesToSave]
+                for (let ele of policies) {
+                    var eleName = Blockly.Xml.textToDom(ele).getElementsByTagName("field")[0].textContent
+                    const nameOfSavedBlock = xml.getElementsByTagName("field")[0].textContent
+                    if (eleName === nameOfSavedBlock) {
+                        if (policies.length === 1) {
+                            policies.splice(policies.indexOf(ele), 1)
+                            setSavedPolicies(policies);
+                            localStorage.removeItem("savedPolicies")
+                            break
+                        }
+                        policies.splice(policies.indexOf(ele), 1)
+                        setSavedPolicies(policies);
+                        break
+                    }
+
+                }
+            }
+    }
+    
+
     const savePolicy = () => {
         var code = JSONGenerator.workspaceToCode(
             workspace
@@ -108,7 +132,7 @@ const BlocklyComponent = (props) => {
     const { children } = props;
     return (
         <React.Fragment>
-            <PolicyList savePolicy={savePolicy} editPolicy={editPolicy} />
+            <PolicyList savePolicy={savePolicy} editPolicy={editPolicy} deletePolicy={deletePolicy}/>
             <div ref={blocklyDiv} id="blocklyDiv" />
             <xml xmlns="https://developers.google.com/blockly/xml" is="blockly" style={{ display: 'none' }} ref={toolbox}>
                 {children}

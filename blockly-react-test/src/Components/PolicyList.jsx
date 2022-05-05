@@ -30,11 +30,18 @@ const PolicyList = (props) => {
                 const policyXML = Blockly.Xml.textToDom(sp[Policy])
                 setSavedPolicies(arr => [...arr, policyXML])
             }
+        } else {
+            setSavedPolicies([])
         }
     }
 
     const saveClick = () => {
         props.savePolicy()
+        setTimeout(() => {getSavedPolicies()}, '100')
+    }
+
+    const deleteClick = () => {
+        props.deletePolicy(selected)
         setTimeout(() => {getSavedPolicies()}, '100')
     }
 
@@ -55,8 +62,11 @@ const PolicyList = (props) => {
             <button className="saveBtn" onClick={() => saveClick()}>
                 Save
             </button>
-            <button className="editBtn" onClick={() => props.editPolicy(selected)} > 
+            <button className="editBtn" onClick={() => props.editClick(selected)} > 
                 Edit
+            </button>
+            <button className="deleteBtn" onClick={() => deleteClick()} > 
+                Delete
             </button>
         </div>
     );
