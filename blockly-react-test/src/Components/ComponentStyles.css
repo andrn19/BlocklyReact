@@ -58,8 +58,7 @@
     justify-content: center;
     top: 8%;
     width: 14%;
-    height: 80%;
-    max-width: fit-content;
+    height: 80%; 
     padding: .5rem .5rem 1rem;
     max-height: 29rem;
     overflow-y: none;
