@@ -14,7 +14,7 @@ const List = {
       },
       {
         table: 3,
-        tableStatus: "Currently",
+        tableStatus: "In Progress,",
         policy: "Clear",
         lastClean: "10:00",
       },

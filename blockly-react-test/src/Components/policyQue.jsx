@@ -41,22 +41,22 @@ const PolicyQue = () => {
 
     const stateStyle = (state) => {
         if (state === "Done") {
-            return { color: "lightgreen" }
+            return { color: "green" }
         }
-        if (state === "Currently") {
-            return { color: "lightblue" }
+        if (state === "In Progress,") {
+            return { color: "blue" }
         }
         if (state === "Rejected") {
             return { color: "red" }
         }
         else {
-            return { color: "white" }
+            return { color: "grey" }
         }
     }
 
     return (
         <div className="queDiv">
-            <center style={{ color: "white" }}><h2>Tasks</h2></center>
+            <center style={{ color: "black" }}><h2>Tasks</h2></center>
             <DragDropContext
                 onDragEnd={onDragEnd}>
                 <ul className="queList">
@@ -73,7 +73,7 @@ const PolicyQue = () => {
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}>
                                                 Table {item.table}: <span style={stateStyle(item.tableStatus)}>{item.tableStatus} {item.policy}</span><br />
-                                                <span style={{ fontSize: 14, color: "darkgrey" }}> Last cleaned {item.lastClean}</span>
+                                                <span style={{ fontSize: 14, color: "dimgrey" }}> Last cleaned {item.lastClean}</span>
                                             </p>
                                         )}
                                     </Draggable>

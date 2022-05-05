@@ -1,5 +1,5 @@
 #ProgramButton {
-    background-color: #9375F0;
+    background-color: #C6E0E9;
     color: black;
     padding: 5px 15px;
     border-radius: 5px;
@@ -12,7 +12,7 @@
 }
 
 #BackButton {
-    background-color: #9375F0;
+    background-color: #C6E0E9;
     color: black;
     padding: 5px 15px;
     border-radius: 5px;
@@ -69,7 +69,7 @@
 .policies {
     color: white;
     position: relative;
-    background-color: #9375F0;
+    background-color: #5d73b8;
     margin-bottom: 5px;
     margin-right: 5px;
     padding: 10px;
@@ -281,7 +281,8 @@
     left: 12%;
     width: 30%;
     height: 30rem;
-    background-color: rgb(97, 95, 95);
+    background-color: rgb(255, 255, 255);
+    border: black solid 1px;
 }
 
 .queDiv .queList {
@@ -294,11 +295,12 @@
 }
 
 .queListItem {
-    color: white;
     padding: 0.1rem 0.3rem;
-    background-color: rgb(97, 95, 95);
+    background-color: #C6E0E9;
     height: fit-content;
     margin: 0.5rem;
+    border: 1px solid #939697;
+    border-radius: 5px;
 }
 
 /* Front page canteenview */
