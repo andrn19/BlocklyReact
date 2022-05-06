@@ -13,45 +13,42 @@ function DragNDropPolicies(props) {
     // const frameToSend = {
     //     "frame": { query }
     // }
-
-    const frameToSend = [
-            {
-                PolicyName: 'Policy 1',
-                Id: '1'
-            },
-            {
-                PolicyName: 'Policy 2',
-                Id: '2'
-            },
-            {
-                PolicyName: 'Policy 3',
-                Id: '3'
-            },
-            {
-                PolicyName: 'Policy 4',
-                Id: '4'
-            },
-        ]
-    
-
     useEffect(() => {
-        setPolicies(frameToSend)
-    }, []);
-
-    useEffect(() => {
-        const client = getClient();
-        let isActive = true;
-        if (isActive) {
-            client.publish('fcs/fcServiceTopic', JSON.stringify(frameToSend))
-            client.on("message", (topic, message) => {
-                var msg = message.toString()
-                var jsonMSG = jsonSimple.decode(msg)
-                var policies = jsonMSG.policies
-                setPolicies(policies)
-            });
+        if (policies.length > 0) {
+            const json = policies[0]
+            console.log(json)
+            console.log(JSON.parse(json))
         }
-        return () => { isActive = false }
-    }, []);
+    })
+
+    useEffect(() => {
+        if (localStorage.getItem("savedPoliciesJSON") !== null) {
+            const localJSON = localStorage.getItem("savedPoliciesJSON")
+            const storedJSON = localJSON.split(/(?=,{\n \"@type")/g);
+            const sj = storedJSON.map(string => string.replaceAll(',{\n \"@type"', '{\n "@type"'));
+            setPolicies(sj)
+        }
+    }, [])
+
+
+    // useEffect(() => {
+    //     setPolicies(frameToSend)
+    // }, []);
+
+    // useEffect(() => {
+    //     const client = getClient();
+    //     let isActive = true;
+    //     if (isActive) {
+    //         client.publish('fcs/fcServiceTopic', JSON.stringify(frameToSend))
+    //         client.on("message", (topic, message) => {
+    //             var msg = message.toString()
+    //             var jsonMSG = jsonSimple.decode(msg)
+    //             var policies = jsonMSG.policies
+    //             setPolicies(policies)
+    //         });
+    //     }
+    //     return () => { isActive = false }
+    // }, []);
 
     const { setDataEvent } = useEmitter();
 
@@ -62,21 +59,21 @@ function DragNDropPolicies(props) {
         console.log('{\n "@type": "Table",\n "name": "' + e.dropData.tableData + '"\n}')
     };
 
-    return ( 
-            <div> 
-                <h1 style={{fontSize: 20, paddingLeft: 25}}>Drag and drop policies</h1>
-                <ul>
-                    {policies.map((policy) => (
-                    <DragDropContainer 
-                        targetKey="foo"  
+    return (
+        <div>
+            <h1 style={{ fontSize: 20, paddingLeft: 25 }}>Drag and drop policies</h1>
+            <ul>
+                {policies.map((policy) => (
+                    <DragDropContainer
+                        targetKey="foo"
                         dragData={policy.PolicyName}
                         onDrop={dropHandler}
-                        key={policy.Id}>                  
-                    <ul className={'policies'}> {policy.PolicyName} </ul> 
+                        key={policy.Id}>
+                        <ul className={'policies'}> {JSON.parse(policy).name} </ul>
                     </DragDropContainer>
-                    ))}
-                </ul>
-            </div>
+                ))}
+            </ul>
+        </div>
     )
 }
 
