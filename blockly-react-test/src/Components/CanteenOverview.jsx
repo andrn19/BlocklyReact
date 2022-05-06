@@ -16,6 +16,7 @@ function Canteen(props) {
     
     const dropHandler = (e) => {  
         setDataEvent({tableNr:data, policy: `${e.dragData}`});
+
     };
 
     return (
@@ -26,7 +27,12 @@ function Canteen(props) {
                     </div>
                     <DropTarget 
                     targetKey="foo" 
-                    dropData={'Table 1'}
+                    dropData={
+                        {
+                        "number": 'Table 1',
+                        "tableData": 'table-1-sdu-canteen-south'
+                        }
+                    }
                     onHit={dropHandler}>
                         <div>
                         <img className={'btn1'} id='1' src={image2} />
@@ -34,7 +40,12 @@ function Canteen(props) {
                     </DropTarget>
                     <DropTarget 
                     targetKey="foo" 
-                    dropData={'Table 2'}
+                    dropData={
+                        {
+                        "number": 'Table 2',
+                        "tableData": 'table-2-sdu-canteen-south'
+                        }
+                    }
                     onHit={dropHandler}>
                         <div>
                         <img className={'btn2'} id='2' src={image2} />
@@ -42,7 +53,12 @@ function Canteen(props) {
                     </DropTarget>
                     <DropTarget 
                     targetKey="foo" 
-                    dropData={'Table 3'}
+                    dropData={
+                        {
+                        "number": 'Table 3',
+                        "tableData": 'table-3-sdu-canteen-south'
+                        }
+                    }
                     onHit={dropHandler}>
                         <div>
                         <img className={'btn3'} id='3' src={image2} />
@@ -50,7 +66,12 @@ function Canteen(props) {
                     </DropTarget>
                     <DropTarget 
                     targetKey="foo" 
-                    dropData={'Table 4'}
+                    dropData={
+                        {
+                        "number": 'Table 4',
+                        "tableData": 'table-4-sdu-canteen-south'
+                        }
+                    }
                     onHit={dropHandler}>
                         <div>
                         <img className={'btn4'} id='4' src={image2} />
@@ -58,7 +79,12 @@ function Canteen(props) {
                     </DropTarget>
                     <DropTarget 
                     targetKey="foo" 
-                    dropData={'Table 5'}
+                    dropData={
+                        {
+                        "number": 'Table 5',
+                        "tableData": 'table-5-sdu-canteen-south'
+                        }
+                    }
                     onHit={dropHandler}>
                         <div>
                         <img className={'btn5'} id='5' src={image3} />
@@ -66,7 +92,12 @@ function Canteen(props) {
                     </DropTarget>
                     <DropTarget 
                     targetKey="foo" 
-                    dropData={'Table 6'}
+                    dropData={
+                        {
+                        "number": 'Table 6',
+                        "tableData": 'table-6-sdu-canteen-south'
+                        }
+                    }
                     onHit={dropHandler}>
                         <div>
                         <img className={'btn6'} id='6' src={image4} />
@@ -74,7 +105,12 @@ function Canteen(props) {
                     </DropTarget>
                     <DropTarget 
                     targetKey="foo" 
-                    dropData={'Table 7'}
+                    dropData={
+                        {
+                        "number": 'Table 7',
+                        "tableData": 'table-7-sdu-canteen-south'
+                        }
+                    }
                     onHit={dropHandler}>
                         <div>
                         <img className={'btn7'} id='7' src={image4} />
@@ -82,7 +118,12 @@ function Canteen(props) {
                     </DropTarget>
                     <DropTarget 
                     targetKey="foo" 
-                    dropData={'Table 8'}
+                    dropData={
+                        {
+                        "number": 'Table 8',
+                        "tableData": 'table-8-sdu-canteen-south'
+                        }
+                    }
                     onHit={dropHandler}>
                         <div>
                         <img className={'btn8'} id='8' src={image4} />
@@ -90,7 +131,12 @@ function Canteen(props) {
                     </DropTarget>
                     <DropTarget 
                     targetKey="foo" 
-                    dropData={'Table 9'}
+                    dropData={
+                        {
+                        "number": 'Table 9',
+                        "tableData": 'table-9-sdu-canteen-south'
+                        }
+                    }
                     onHit={dropHandler}>
                         <div>
                         <img className={'btn9'} id='9' src={image4} />

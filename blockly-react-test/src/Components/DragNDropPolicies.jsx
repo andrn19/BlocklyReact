@@ -14,8 +14,7 @@ function DragNDropPolicies(props) {
     //     "frame": { query }
     // }
 
-    const frameToSend = {
-        policies: [
+    const frameToSend = [
             {
                 PolicyName: 'Policy 1',
                 Id: '1'
@@ -33,7 +32,11 @@ function DragNDropPolicies(props) {
                 Id: '4'
             },
         ]
-    }
+    
+
+    useEffect(() => {
+        setPolicies(frameToSend)
+    }, []);
 
     useEffect(() => {
         const client = getClient();
@@ -52,8 +55,11 @@ function DragNDropPolicies(props) {
 
     const { setDataEvent } = useEmitter();
 
+    // sets dropdata from CanteenOverview in the Applied polices list
+    // recieves JSON format for policyOn
     const dropHandler = (e) => {
-        setDataEvent(`${e.dropData}`);
+        setDataEvent(`${e.dropData.number}`);
+        console.log('{\n "@type": "Table",\n "name": "' + e.dropData.tableData + '"\n}')
     };
 
     return ( 
