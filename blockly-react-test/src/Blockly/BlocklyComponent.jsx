@@ -10,7 +10,6 @@ import PolicyList from "../Components/PolicyList";
 import JSONGenerator from "../generator/generator";
 
 import { getClient } from '../MQTT/mqtt';
-import { Block } from "blockly";
 
 Blockly.setLocale(locale);
 
@@ -54,7 +53,6 @@ const BlocklyComponent = (props) => {
     }, []);
 
     const editPolicy = (xml) => {
-        console.log(xml)
         if (xml !== undefined) {
             Blockly.Xml.clearWorkspaceAndLoadFromXml(xml, workspace)
         }
@@ -88,7 +86,7 @@ const BlocklyComponent = (props) => {
         var code = JSONGenerator.workspaceToCode(
             workspace
         );
-        //console.log(code)
+        console.log(code)
 
         //saving the xml for the workspace so user can save created blocks
         if (code.length > 0) {
@@ -97,7 +95,6 @@ const BlocklyComponent = (props) => {
             if (policiesToSave.length > 0) {
                 var policies = [...policiesToSave]
                 for (let ele of policies) {
-                    console.log(ele)
                     var eleName = Blockly.Xml.textToDom(ele).getElementsByTagName("field")[0].textContent
                     const nameOfSavedBlock = xml.getElementsByTagName("field")[0].textContent
 
