@@ -8,11 +8,34 @@ import jsonSimple from "json-simple";
 function DragNDropPolicies(props) {
 
     const [policies, setPolicies] = useState([]);
+    const [jsonPolicy, setJsonPolicies] = useState([]);
 
     // const query = '"@type": "scm:CleaningPolicy"\n "@type": "scm:ClearingPolicy"'
     // const frameToSend = {
     //     "frame": { query }
     // }
+    
+    const clearingPolicyExample = [
+        {
+            "@type": "ClearingPolicy",
+            "name": "<name>",
+            "description": "",
+            "enabled": "false",
+            "condition": {"and": [
+           {"==": [{"var": "plate"}, {"var": "plateType"}]},
+           {"==": [{"var": "napkin"}, {"var": "napkinType"}]},
+           ]},
+           "vars": [  
+                {"plateType": {"value": "Plate"}},
+                {"plate": {"property": "anchorOf", "@type": "SensedEntity", "name": ""}},
+                {"napkinType": {"value": "Napkin"}},
+                {"napkin": {"property": "anchorOf", "@type": "SensedEntity", "name": ""}}
+            ],
+            "action": "clear",
+            "policyOn": []
+        },
+    ]
+    
 
     const frameToSend = [
             {
@@ -36,6 +59,8 @@ function DragNDropPolicies(props) {
 
     useEffect(() => {
         setPolicies(frameToSend)
+        setJsonPolicies(clearingPolicyExample)
+        
     }, []);
 
     useEffect(() => {
@@ -59,8 +84,42 @@ function DragNDropPolicies(props) {
     // recieves JSON format for policyOn
     const dropHandler = (e) => {
         setDataEvent(`${e.dropData.number}`);
-        console.log('{\n "@type": "Table",\n "name": "' + e.dropData.tableData + '"\n}')
+        //setJsonPolicies('{\n "@type": "ClearingPolicy",\n "name": "",\n "description": "",\n "enabled": "true",\n "condition": "",\n "vars": "",\n "action": "",\n "policyOn": [\n {\n "@type": "Table", \n "name:" "' + e.dropData.tableData + '" \n } \n ] \n}')
+        
+        //setJsonPolicies(prevState => ({
+         //   jsonPolicy: {
+         //       ...prevState.policyOn,
+         //       policyOn: e.dropData
+        //    }
+        //}))
+
+        //console.log(clearingPolicyExample[0].vars[1].plate.name)
+        clearingPolicyExample[0].policyOn.push(e.dropData)
+        console.log(clearingPolicyExample[0])
+        
+        if (jsonPolicy.length > 0) {
+            var jsonPolicies = [...jsonPolicy]
+            for (let ele of jsonPolicies) {
+                
+               
+            }
+        }
+        
+        
+
+        //arr = { ...arr, policyOn: { policyOn: e.dropData }};
+
+        //let arr = jsonPolicy
+        //arr.put("policyOn", e.dropData) 
+        
+
+        //pos = arr.map(val => val.policyOn).indexOf('policyOn')
+        
+
+        //console.log()
     };
+
+
 
     return ( 
             <div> 
