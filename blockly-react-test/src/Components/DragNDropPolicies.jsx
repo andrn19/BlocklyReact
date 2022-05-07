@@ -66,10 +66,10 @@ function DragNDropPolicies(props) {
                 {policies.map((policy) => (
                     <DragDropContainer
                         targetKey="foo"
-                        dragData={policy.PolicyName}
+                        dragData={JSON.parse(policy).name}
                         onDrop={dropHandler}
                         key={policy.Id}>
-                        <ul className={'policies'}> {JSON.parse(policy).name} </ul>
+                        <p className="policies"> {JSON.parse(policy).name} </p>
                     </DragDropContainer>
                 ))}
             </ul>

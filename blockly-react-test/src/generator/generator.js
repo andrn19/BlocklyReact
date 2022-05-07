@@ -20,43 +20,43 @@ JSONGenerator['SpecificClearingPolicy'] = function (block) {
     const object_array = statements_objects.split('},')
     for (let ele of object_array) {
         if (ele.includes("Plate")) {
-            usedVars = usedVars + '\n"plateType" = {"value": "Plate"},\n"plate" = {"property": "anchorOf", "@type": "SensedEntity", "name": ""},'
-            statements_condition = statements_condition + '\n{"==": [{"var"; "plate"}, {"var"; plateType}]},'
+            usedVars = usedVars + '\n{"plateType" : {"value": "Plate"}},\n{"plate" : {"property": "anchorOf", "@type": "SensedEntity", "name": ""}},'
+            statements_condition = statements_condition + '\n{"==": [{"var": "plate"}, {"var": "plateType"}]},'
         }
         else if (ele.includes("Napkin")) {
-            usedVars = usedVars + '\n"napkinType" = {"value": "Napkin"},\n"napkin" = {"property": "anchorOf", "@type": "SensedEntity", "name": ""},'
-            statements_condition = statements_condition + '\n{"==": [{"var"; "napkin"}, {"var"; napkinType}]},'
+            usedVars = usedVars + '\n{"napkinType" : {"value": "Napkin"}},\n{"napkin" : {"property": "anchorOf", "@type": "SensedEntity", "name": ""}},'
+            statements_condition = statements_condition + '\n{"==": [{"var": "napkin"}, {"var": "napkinType"}]},'
         }
         else if (ele.includes("Utensil")) {
-            usedVars = usedVars + '\n"utensilType" = {"value": "Utensil"},\n"utensil" = {"property": "anchorOf", "@type": "SensedEntity", "name": ""},'
-            statements_condition = statements_condition + '\n{"==": [{"var"; "utensil"}, {"var"; utensilType}]},'
+            usedVars = usedVars + '\n{"utensilType" : {"value": "Utensil"}},\n{"utensil" : {"property": "anchorOf", "@type": "SensedEntity", "name": ""}},'
+            statements_condition = statements_condition + '\n{"==": [{"var": "utensil"}, {"var": "utensilType"}]},'
         }
         else if (ele.includes('Glass')) {
-            usedVars = usedVars + '\n"glassType" = {"value": "Glass"},\n"glass" = {"property": "anchorOf", "@type": "SensedEntity", "name": ""},'
-            statements_condition = statements_condition + '\n{"==": [{"var"; "glass"}, {"var"; glassType}]},'
+            usedVars = usedVars + '\n{"glassType" : {"value": "Glass"}},\n{"glass" : {"property": "anchorOf", "@type": "SensedEntity", "name": ""}},'
+            statements_condition = statements_condition + '\n{"==": [{"var": "glass"}, {"var": "glassType"}]},'
         }
         else if (ele.includes('Bottle')) {
-            usedVars = usedVars + '\n"bottleType" = {"value": "Bottle"},\n"bottle" = {"property": "anchorOf", "@type": "SensedEntity", "name": ""},'
-            statements_condition = statements_condition + '\n{"==": [{"var"; "bottle"}, {"var"; bottleType}]},'
+            usedVars = usedVars + '\n{"bottleType" : {"value": "Bottle"}},\n{"bottle" : {"property": "anchorOf", "@type": "SensedEntity", "name": ""}},'
+            statements_condition = statements_condition + '\n{"==": [{"var": "bottle"}, {"var": "bottleType"}]},'
         }
         else if (ele.includes('Can')) {
-            usedVars = usedVars + '\n"canType" = {"value": "Can"},\n"can" = {"property": "anchorOf", "@type": "SensedEntity", "name": ""},'
-            statements_condition = statements_condition + '\n{"==": [{"var"; "can"}, {"var"; canType}]},'
+            usedVars = usedVars + '\n{"canType" : {"value": "Can"}},\n{"can" : {"property": "anchorOf", "@type": "SensedEntity", "name": ""}},'
+            statements_condition = statements_condition + '\n{"==": [{"var": "can"}, {"var": "canType"}]},'
         }
         else if (ele.includes('Cup')) {
-            usedVars = usedVars + '\n"cupType": {"value": "Cup"},\n"cup": {"property": "anchorOf", "@type": "SensedEntity", "name": ""},'
-            statements_condition = statements_condition + '\n{"==": [{"var"; "cup"}, {"var"; cupType}]},'
+            usedVars = usedVars + '\n{"cupType": {"value": "Cup"}},\n{"cup": {"property": "anchorOf", "@type": "SensedEntity", "name": ""}},'
+            statements_condition = statements_condition + '\n{"==": [{"var": "cup"}, {"var": "cupType"}]},'
         }
     }
     if (statements_condition.includes('},\n{')) {
-        statements_condition = '"and": [' + statements_condition + '\n]'
+        statements_condition = '{"and": [' + statements_condition + '\n]},'
     }
     if (statements_condition.includes('time')) {
         usedVars = usedVars + '\n"time": {"property": "time"},'
     }
     statements_condition.slice(2, -1)
     // var statements_actions = JSONGenerator.statementToCode(block, 'actions').slice(2, -1).replaceAll(',', ' | '); will be used if multiple actions can be used
-    var code = '{\n "@type": "ClearingPolicy",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "false",\n "condition": {' + statements_condition + '},\n "vars": [' + usedVars.slice(0, -1) + '\n],\n "action": "clear",\n "policyOn": []\n }';
+    var code = '{\n "@type": "ClearingPolicy",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "false",\n "condition": ' + statements_condition + '\n "vars": [' + usedVars.slice(0, -1) + '\n],\n "action": "clear",\n "policyOn": []\n }';
     return code;
 };
 
@@ -65,13 +65,13 @@ JSONGenerator['ClearingPolicy'] = function (block) {
     var usedVars = '';
     var statements_condition = JSONGenerator.statementToCode(block, 'conditions').slice(2, -1);
     if (statements_condition.includes('},{')) {
-        statements_condition = '"and": [' + statements_condition + '\n]'
+        statements_condition = '{"and": [' + statements_condition + '\n]}'
     }
     if (statements_condition.includes('time')) {
         usedVars = '"time": {"property": "time"},'
     }
     // var statements_actions = JSONGenerator.statementToCode(block, 'actions').slice(2, -1).replaceAll(',', ' | ');
-    var code = '{\n "@type": "ClearingPolicy",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "false",\n "condition": {' + statements_condition + '},\n "vars": [' + usedVars.slice(0, -1) + '\n],\n "action": "clear",\n "policyOn": []\n }';
+    var code = '{\n "@type": "ClearingPolicy",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "false",\n "condition": ' + statements_condition + ',\n "vars": [' + usedVars.slice(0, -1) + '\n],\n "action": "clear",\n "policyOn": []\n }';
     return code;
 };
 
@@ -80,13 +80,13 @@ JSONGenerator['CleaningPolicy'] = function (block) {
     var usedVars = '';
     var statements_condition = JSONGenerator.statementToCode(block, 'conditions').slice(2, -1);
     if (statements_condition.includes('},{')) {
-        statements_condition = '"and": [' + statements_condition + '\n]'
+        statements_condition = '{"and": [' + statements_condition + '\n]}'
     }
     if (statements_condition.includes('time')) {
         usedVars = '"time": {"property": "time"},'
     }
     // var statements_actions = JSONGenerator.statementToCode(block, 'actions').slice(2, -1).replaceAll(',', ' | ');
-    var code = '{\n "@type": "CleaningPolicy",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "false",\n "condition": {' + statements_condition + '},\n "vars": [' + usedVars.slice(0, -1) + '\n],\n "action": "clean",\n "policyOn": []\n }';
+    var code = '{\n "@type": "CleaningPolicy",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "false",\n "condition"::' + statements_condition + ',\n "vars": [' + usedVars.slice(0, -1) + '\n],\n "action": "clean",\n "policyOn": []\n }';
     return code;
 };
 
