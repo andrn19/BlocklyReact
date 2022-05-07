@@ -3,7 +3,7 @@ import * as Blockly from 'blockly/core';
 var blocks = [
   {
     "type": "SpecificClearingPolicy",
-    "message0": "Clear table of specific objects %1 Name your policy: %2 %3 Actions %4 Conditions %5 Objects %6",
+    "message0": "Clear table of specific objects %1 Name your policy: %2 %3 Conditions %4 Objects %5",
     "args0": [
       {
         "type": "input_dummy"
@@ -16,10 +16,10 @@ var blocks = [
       {
         "type": "input_dummy"
       },
-      {
-        "type": "input_statement",
-        "name": "actions"
-      },
+      // {
+      //   "type": "input_statement",
+      //   "name": "actions"
+      // },
       {
         "type": "input_statement",
         "name": "conditions"
@@ -35,7 +35,7 @@ var blocks = [
   },
   {
     "type": "ClearingPolicy",
-    "message0": "Clearing Policy %1 Name your policy: %2 %3 Actions %4 Conditions %5",
+    "message0": "Clearing Policy %1 Name your policy: %2 %3 Conditions %4",
     "args0": [
       {
         "type": "input_dummy"
@@ -48,10 +48,10 @@ var blocks = [
       {
         "type": "input_dummy"
       },
-      {
-        "type": "input_statement",
-        "name": "actions"
-      },
+      // {
+      //   "type": "input_statement",
+      //   "name": "actions"
+      // },
       {
         "type": "input_statement",
         "name": "conditions"
@@ -63,7 +63,7 @@ var blocks = [
   },
   {
     "type": "CleaningPolicy",
-    "message0": "Cleaning Policy %1 Name your policy: %2 %3 Actions %4 Conditions %5",
+    "message0": "Cleaning Policy %1 Name your policy: %2 %3 Conditions %4",
     "args0": [
       {
         "type": "input_dummy"
@@ -76,10 +76,10 @@ var blocks = [
       {
         "type": "input_dummy"
       },
-      {
-        "type": "input_statement",
-        "name": "Actions"
-      },
+      // {
+      //   "type": "input_statement",
+      //   "name": "Actions"
+      // },
       {
         "type": "input_statement",
         "name": "Conditions"
