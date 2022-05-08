@@ -214,6 +214,7 @@
     width: 20%;
     color: black;
     background-color: white;
+    position: absolute;
     display: flex;
     justify-content: center;
     top: 15%;

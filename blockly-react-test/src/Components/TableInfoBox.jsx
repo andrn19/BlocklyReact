@@ -15,7 +15,7 @@ const TableInfoBox = () => {
         } 
     }, [data]);
     
-    const hi = () => {
+    const policyDelete = () => {
         policies.pop();
         setShownPolicies([...policies]);
     }
@@ -35,7 +35,7 @@ const TableInfoBox = () => {
                     {
                         Header: 'Remove',
                         accessor: 'action',
-                        Cell: () => (<button onClick={hi}>X</button>)
+                        Cell: () => (<button onClick={policyDelete}>X</button>)
                     },
                 ],
             },

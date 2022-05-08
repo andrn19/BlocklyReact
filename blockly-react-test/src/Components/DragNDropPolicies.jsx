@@ -8,61 +8,12 @@ import jsonSimple from "json-simple";
 function DragNDropPolicies(props) {
 
     const [policies, setPolicies] = useState([]);
-    const [jsonPolicy, setJsonPolicies] = useState([]);
 
     // const query = '"@type": "scm:CleaningPolicy"\n "@type": "scm:ClearingPolicy"'
     // const frameToSend = {
     //     "frame": { query }
     // }
     
-    const clearingPolicyExample = [
-        {
-            "@type": "ClearingPolicy",
-            "name": "<name>",
-            "description": "",
-            "enabled": "false",
-            "condition": {"and": [
-           {"==": [{"var": "plate"}, {"var": "plateType"}]},
-           {"==": [{"var": "napkin"}, {"var": "napkinType"}]},
-           ]},
-           "vars": [  
-                {"plateType": {"value": "Plate"}},
-                {"plate": {"property": "anchorOf", "@type": "SensedEntity", "name": ""}},
-                {"napkinType": {"value": "Napkin"}},
-                {"napkin": {"property": "anchorOf", "@type": "SensedEntity", "name": ""}}
-            ],
-            "action": "clear",
-            "policyOn": []
-        },
-    ]
-    
-
-    const frameToSend = [
-            {
-                PolicyName: 'Policy 1',
-                Id: '1'
-            },
-            {
-                PolicyName: 'Policy 2',
-                Id: '2'
-            },
-            {
-                PolicyName: 'Policy 3',
-                Id: '3'
-            },
-            {
-                PolicyName: 'Policy 4',
-                Id: '4'
-            },
-        ]
-    
-
-    useEffect(() => {
-        setPolicies(frameToSend)
-        setJsonPolicies(clearingPolicyExample)
-        
-    }, []);
-
     useEffect(() => {
         if (localStorage.getItem("savedPoliciesJSON") !== null) {
             const localJSON = localStorage.getItem("savedPoliciesJSON")
@@ -94,43 +45,20 @@ function DragNDropPolicies(props) {
 
     const { setDataEvent } = useEmitter();
 
-    // sets dropdata from CanteenOverview in the Applied polices list
-    // recieves JSON format for policyOn
-    const dropHandler = (e) => {
-        setDataEvent(`${e.dropData.number}`);
+    const dropHandler = (e, policy) => {
+        setDataEvent(`${JSON.stringify(e.dropData) }`);
         //setJsonPolicies('{\n "@type": "ClearingPolicy",\n "name": "",\n "description": "",\n "enabled": "true",\n "condition": "",\n "vars": "",\n "action": "",\n "policyOn": [\n {\n "@type": "Table", \n "name:" "' + e.dropData.tableData + '" \n } \n ] \n}')
-        
-        //setJsonPolicies(prevState => ({
-         //   jsonPolicy: {
-         //       ...prevState.policyOn,
-         //       policyOn: e.dropData
-        //    }
-        //}))
 
-        //console.log(clearingPolicyExample[0].vars[1].plate.name)
-        clearingPolicyExample[0].policyOn.push(e.dropData)
-        console.log(clearingPolicyExample[0])
+        var policyJson = policy; 
+        const tableObj = {"@type": "Table", "name": e.dropData.tableData };
+        policyJson.policyOn.push(tableObj);
         
-        if (jsonPolicy.length > 0) {
-            var jsonPolicies = [...jsonPolicy]
-            for (let ele of jsonPolicies) {
-                
-               
-            }
+        if (policyJson.vars.length > 0) {
+            var varString = JSON.stringify(policyJson.vars)
+            varString = varString.replaceAll('"name":""', '"name":"'+e.dropData.tableData+'"')
+            var varObj = JSON.parse(varString);
+            policyJson.vars = varObj
         }
-        
-        
-
-        //arr = { ...arr, policyOn: { policyOn: e.dropData }};
-
-        //let arr = jsonPolicy
-        //arr.put("policyOn", e.dropData) 
-        
-
-        //pos = arr.map(val => val.policyOn).indexOf('policyOn')
-        
-
-        //console.log()
     };
 
     return (
@@ -141,7 +69,7 @@ function DragNDropPolicies(props) {
                     <DragDropContainer
                         targetKey="foo"
                         dragData={JSON.parse(policy).name}
-                        onDrop={dropHandler}
+                        onDrop={(e) => dropHandler(e, policy)}
                         key={policy.Id}>
                         <p className="policies"> {JSON.parse(policy).name} </p>
                     </DragDropContainer>

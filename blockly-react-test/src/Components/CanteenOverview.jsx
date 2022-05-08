@@ -14,8 +14,9 @@ function Canteen(props) {
     const { setDataEvent } = useEmitter();
     const { data } = useEmitter();
     
-    const dropHandler = (e) => {  
-        setDataEvent({tableNr:data, policy: `${e.dragData}`});
+    const dropHandler = (e) => { 
+        const sentData = JSON.parse(data)
+        setDataEvent({tableNr:sentData.number, policy: `${e.dragData}`});
 
     };
 
