@@ -82,7 +82,7 @@ var blocks = [
       // },
       {
         "type": "input_statement",
-        "name": "Conditions"
+        "name": "conditions"
       },
     ],
     "colour": 120,

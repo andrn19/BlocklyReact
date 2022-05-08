@@ -51,12 +51,15 @@ JSONGenerator['SpecificClearingPolicy'] = function (block) {
     if (statements_condition.includes('},\n{')) {
         statements_condition = '{"and": [' + statements_condition + '\n]},'
     }
+    else {
+        statements_condition = '""'
+    }
     if (statements_condition.includes('time')) {
         usedVars = usedVars + '\n"time": {"property": "time"},'
     }
     statements_condition.slice(2, -1)
     // var statements_actions = JSONGenerator.statementToCode(block, 'actions').slice(2, -1).replaceAll(',', ' | '); will be used if multiple actions can be used
-    var code = '{\n "@type": "ClearingPolicy",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "false",\n "condition": ' + statements_condition + '\n "vars": [' + usedVars.slice(0, -1) + '\n],\n "action": "clear",\n "policyOn": []\n }';
+    var code = '{\n "@type": "ClearingPolicy",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "false",\n "condition": ' + statements_condition + ',\n "vars": [' + usedVars.slice(0, -1) + '\n],\n "action": "clear",\n "policyOn": []\n }';
     return code;
 };
 
@@ -66,6 +69,9 @@ JSONGenerator['ClearingPolicy'] = function (block) {
     var statements_condition = JSONGenerator.statementToCode(block, 'conditions').slice(2, -1);
     if (statements_condition.includes('},{')) {
         statements_condition = '{"and": [' + statements_condition + '\n]}'
+    }
+    else {
+        statements_condition = '""'
     }
     if (statements_condition.includes('time')) {
         usedVars = '"time": {"property": "time"},'
@@ -82,11 +88,14 @@ JSONGenerator['CleaningPolicy'] = function (block) {
     if (statements_condition.includes('},{')) {
         statements_condition = '{"and": [' + statements_condition + '\n]}'
     }
+    else {
+        statements_condition = '""'
+    }
     if (statements_condition.includes('time')) {
         usedVars = '"time": {"property": "time"},'
     }
     // var statements_actions = JSONGenerator.statementToCode(block, 'actions').slice(2, -1).replaceAll(',', ' | ');
-    var code = '{\n "@type": "CleaningPolicy",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "false",\n "condition"::' + statements_condition + ',\n "vars": [' + usedVars.slice(0, -1) + '\n],\n "action": "clean",\n "policyOn": []\n }';
+    var code = '{\n "@type": "CleaningPolicy",\n "name": "' + text_policyname + '",\n "description": "",\n "enabled": "false",\n "condition":' + statements_condition + ',\n "vars": [' + usedVars.slice(0, -1) + '\n],\n "action": "clean",\n "policyOn": []\n }';
     return code;
 };
 
