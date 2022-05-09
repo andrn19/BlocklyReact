@@ -15,7 +15,7 @@ import {DropTarget} from 'react-drag-drop-container';
 import { useEmitter } from './Emitter';
 
 
-function Canteen(props) {
+function Canteen() {
 
     const { setDataEvent } = useEmitter();
     const { data } = useEmitter();

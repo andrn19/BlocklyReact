@@ -1,5 +1,4 @@
 import mqtt from 'mqtt';
-import jsonSimple from 'json-simple';
 
 const url = "ws://localhost";
 const options = {

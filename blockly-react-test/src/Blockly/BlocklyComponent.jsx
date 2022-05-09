@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
 import './BlocklyComponent.css';
-import jsonSimple from "json-simple";
 
 import Blockly from 'blockly/core';
 import locale from 'blockly/msg/en';
@@ -8,8 +7,6 @@ import 'blockly/blocks';
 
 import PolicyList from "../Components/PolicyList";
 import JSONGenerator from "../generator/generator";
-
-import { getClient } from '../MQTT/mqtt';
 
 Blockly.setLocale(locale);
 
@@ -133,11 +130,6 @@ const BlocklyComponent = (props) => {
                 setPolicyJSON(arr => [...arr, code])
                 workspace.clear()
             }
-
-            //mqtt publishing the generated code
-            // const objToSend = '{\n"doc": {\n' + code + '\n}\n}'
-            // const client = getClient();
-            // client.publish('fcs/fcServiceTopic', objToSend);
         }
     }
 

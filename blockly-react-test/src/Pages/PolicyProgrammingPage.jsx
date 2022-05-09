@@ -40,7 +40,7 @@ const PolicyProgrammingPage = () => {
                     <Block type="no-op" />
                     <Block type="charge" />
                 </Category>
-                <Category name="Clearing Actions" colour="330">
+                {/* <Category name="Clearing Actions" colour="330">
                     <Block type="go to" />
                     <Block type="clear" />
                     <Block type="clear and clean" />
@@ -49,7 +49,7 @@ const PolicyProgrammingPage = () => {
                     <Block type="stop" />
                     <Block type="no-op" />
                     <Block type="charge" />
-                </Category>
+                </Category> */}
                 <Category name="Start Conditions" colour="260">
                     <Block type="time start" />
                     <Block type="people count" />
@@ -64,7 +64,6 @@ const PolicyProgrammingPage = () => {
                     <Block type="normal" />
                 </Category>
                 <Category name="Table Objects" colour="65">
-                    <Block type="allobjects" />
                     <Block type="plate" />
                     <Block type="napkin" />
                     <Block type="utensil" />

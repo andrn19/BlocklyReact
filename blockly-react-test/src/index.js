@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {mqttConnect} from './MQTT/mqtt';
+import { mqttConnect, subscribe } from './MQTT/mqtt';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 mqttConnect();
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//fcs/fcClientTopic is the topic the client should subscribe to, and recive data from send by db
+subscribe('fcs/fcClientTopic')
+
+//fcs/fcServiceTopic is the topic that the service should only publish on
+subscribe('fcs/fcServiceTopic')
+

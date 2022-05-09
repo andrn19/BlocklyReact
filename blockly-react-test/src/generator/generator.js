@@ -108,10 +108,10 @@ JSONGenerator['objectpolicy'] = function (block) {
 
 /* Table Objects */
 
-JSONGenerator["allobjects"] = function () {
-    var code = 'allobjects';
-    return code;
-};
+// JSONGenerator["allobjects"] = function () {
+//     var code = 'allobjects';
+//     return code;
+// };
 
 JSONGenerator["plate"] = function () {
     var code = '{ "@type": "Plate", "name": "plate1" },';
