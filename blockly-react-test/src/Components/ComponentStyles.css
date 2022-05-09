@@ -209,29 +209,23 @@
 /* Drag and Drop Style */
 
 .dragndropview {
-    position: fixed;
+    position: absolute;
     height: 65%;
     width: 20%;
     color: black;
     background-color: white;
-    position: absolute;
-    display: flex;
-    justify-content: center;
     top: 15%;
     right: 5%;
-    padding: 15px;
     border: 1px solid black;
+    overflow: scroll;
 }
 
 .dragndropview .policies {
     color: white;
-    position: relative;
     background-color: #5d73b8;
-    margin-bottom: 5px;
-    margin-right: 5px;
-    padding: 10px;
-    width: 100%;
+    width: 7rem;
     word-wrap: break-word;
+    text-align: center; 
 }
 
 /* policyQue list */

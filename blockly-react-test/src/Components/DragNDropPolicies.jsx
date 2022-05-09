@@ -90,8 +90,8 @@ function DragNDropPolicies(props) {
 
     return (
         <div>
-            <h1 style={{ fontSize: 20, textAlign: 'center'  }}>Drag and drop policies</h1>
-            <ul>
+            <h1 style={{ fontSize: 20, textAlign: 'center'}}>Drag and drop policies</h1>
+            <center>               
                 {policies.map((policy) => (
                     <DragDropContainer
                         targetKey="foo"
@@ -101,7 +101,7 @@ function DragNDropPolicies(props) {
                         <p className="policies"> {JSON.parse(policy).name} </p>
                     </DragDropContainer>
                 ))}
-            </ul>
+            </center>
         </div>
     )
 }
