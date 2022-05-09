@@ -90,7 +90,7 @@ function DragNDropPolicies(props) {
 
     return (
         <div>
-            <h1 style={{ fontSize: 20, paddingLeft: 25 }}>Drag and drop policies</h1>
+            <h1 style={{ fontSize: 20, textAlign: 'center'  }}>Drag and drop policies</h1>
             <ul>
                 {policies.map((policy) => (
                     <DragDropContainer
