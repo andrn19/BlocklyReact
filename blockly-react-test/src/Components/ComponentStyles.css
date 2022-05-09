@@ -269,3 +269,41 @@
     position: absolute;
     left: 50%;
 }
+
+/* STOP button */
+.stopButton {
+    position: absolute;
+    top: 80%;
+    left: 20%;
+    width: 160px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    background: rgb(247, 97, 97);
+   }
+   
+.stopButton .text {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+   }
+   
+.stopButton .icon {
+    position: absolute;
+    border-left: 1px solid #c41b1b;
+    transform: translateX(110px);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+   
+.stopButton svg {
+    width: 15px;
+    fill: #eee;
+   }

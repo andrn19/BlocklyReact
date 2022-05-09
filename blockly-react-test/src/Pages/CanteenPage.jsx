@@ -7,6 +7,7 @@ import "../Components/ComponentStyles.css";
 import CanteenOverview from "../Components/CanteenOverview";
 import Emitter from "../Components/Emitter";
 import PolicyQue from "../Components/policyQue";
+import StopButton from "../Components/StopButton";
 
 const CanteenPage = () => {
 
@@ -26,6 +27,7 @@ const CanteenPage = () => {
                 </div>
             </Emitter>
             <PolicyQue/>
+            <StopButton/>
         </div>
     );
 }

@@ -13,7 +13,33 @@ function DragNDropPolicies(props) {
     // const frameToSend = {
     //     "frame": { query }
     // }
-    
+    const clearingPolicyExample = [
+        {
+            "@type": "ClearingPolicy",
+            "name": "<name>",
+            "description": "",
+            "enabled": "false",
+            "condition": {"and": [
+           {"==": [{"var": "plate"}, {"var": "plateType"}]},
+           {"==": [{"var": "napkin"}, {"var": "napkinType"}]},
+           ]},
+           "vars": [  
+                {"plateType": {"value": "Plate"}},
+                {"plate": {"property": "anchorOf", "@type": "SensedEntity", "name": ""}},
+                {"napkinType": {"value": "Napkin"}},
+                {"napkin": {"property": "anchorOf", "@type": "SensedEntity", "name": ""}}
+            ],
+            "action": "clear",
+            "policyOn": []
+        },
+    ]
+
+    useEffect(() => {
+        //console.log(JSON.stringify(clearingPolicyExample))
+        var arr = JSON.stringify(clearingPolicyExample);
+        console.log(JSON.parse(arr))
+    }, [])
+
     useEffect(() => {
         if (localStorage.getItem("savedPoliciesJSON") !== null) {
             const localJSON = localStorage.getItem("savedPoliciesJSON")
