@@ -28,9 +28,9 @@ const BlocklyComponent = (props) => {
             const localPolicies = localStorage.getItem("savedPolicies")
             const localJSON = localStorage.getItem("savedPoliciesJSON")
             const storedPolicies = localPolicies.split(/(?=<xml)/g);
-            const storedJSON = localJSON.split(/(?=,{\n \"@type")/g);
+            const storedJSON = localJSON.split(/(?=,{ \"@type")/g);
             const sp = storedPolicies.map(string => string.replaceAll('>,', '>'));
-            const sj = storedJSON.map(string => string.replaceAll(',{\n \"@type"', '{\n "@type"'));
+            const sj = storedJSON.map(string => string.replaceAll(',{ \"@type"', '{ "@type"'));
             setSavedPolicies(sp)
             setPolicyJSON(sj)
         }
@@ -109,7 +109,6 @@ const BlocklyComponent = (props) => {
                     const nameOfSavedBlock = xml.getElementsByTagName("field")[0].textContent
                     //check if the saved blocks name is already saved, if so update
                     if (eleName === nameOfSavedBlock) {
-                        console.log(policies.indexOf(ele))
                         policiesJSONcopy[policies.indexOf(ele)] = code
                         policies[policies.indexOf(ele)] = Blockly.Xml.domToText(xml)
                         setSavedPolicies(policies)

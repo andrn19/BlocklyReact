@@ -43,8 +43,9 @@ function DragNDropPolicies(props) {
     useEffect(() => {
         if (localStorage.getItem("savedPoliciesJSON") !== null) {
             const localJSON = localStorage.getItem("savedPoliciesJSON")
-            const storedJSON = localJSON.split(/(?=,{\n \"@type")/g);
-            const sj = storedJSON.map(string => string.replaceAll(',{\n \"@type"', '{\n "@type"'));
+            const storedJSON = localJSON.split(/(?=,{ \"@type")/g);
+            const sj = storedJSON.map(string => string.replaceAll(',{ \"@type"', '{ "@type"'));
+            console.log(storedJSON)
             setPolicies(sj)
         }
     }, [])
