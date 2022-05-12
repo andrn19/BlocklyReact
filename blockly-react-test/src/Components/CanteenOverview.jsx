@@ -12,19 +12,10 @@ import image8 from '../Assets/SmallTableEight.png';
 import image9 from '../Assets/SmallTableNine.png';
 import imageCompass from '../Assets/compass.png';
 import {DropTarget} from 'react-drag-drop-container';
-import { useEmitter } from './Emitter';
 
 
 function Canteen() {
 
-    const { setDataEvent } = useEmitter();
-    const { data } = useEmitter();
-    
-    const dropHandler = (e) => { 
-        const sentData = JSON.parse(data)
-        setDataEvent({tableNr:sentData.number, policy: `${e.dragData}`});
-
-    };
 
     return (
                 <div className="container">
@@ -40,7 +31,8 @@ function Canteen() {
                         "tableData": 'table-1-sdu-canteen-south'
                         }
                     }
-                    onHit={dropHandler}>
+                    //onHit={dropHandler}
+                    >
                         <div>
                         <img className={'btn1'} id='1' src={image1} />
                         </div>
@@ -53,7 +45,7 @@ function Canteen() {
                         "tableData": 'table-2-sdu-canteen-south'
                         }
                     }
-                    onHit={dropHandler}>
+                    >
                         <div>
                         <img className={'btn2'} id='2' src={image2} />
                         </div>
@@ -66,7 +58,7 @@ function Canteen() {
                         "tableData": 'table-3-sdu-canteen-south'
                         }
                     }
-                    onHit={dropHandler}>
+                    >
                         <div>
                         <img className={'btn3'} id='3' src={image3} />
                         </div>
@@ -79,7 +71,7 @@ function Canteen() {
                         "tableData": 'table-4-sdu-canteen-south'
                         }
                     }
-                    onHit={dropHandler}>
+                    >
                         <div>
                         <img className={'btn4'} id='4' src={image4} />
                         </div>
@@ -92,7 +84,7 @@ function Canteen() {
                         "tableData": 'table-5-sdu-canteen-south'
                         }
                     }
-                    onHit={dropHandler}>
+                    >
                         <div>
                         <img className={'btn5'} id='5' src={image5} />
                         </div>
@@ -105,7 +97,7 @@ function Canteen() {
                         "tableData": 'table-6-sdu-canteen-south'
                         }
                     }
-                    onHit={dropHandler}>
+                    >
                         <div>
                         <img className={'btn6'} id='6' src={image6} />
                         </div>
@@ -118,7 +110,7 @@ function Canteen() {
                         "tableData": 'table-7-sdu-canteen-south'
                         }
                     }
-                    onHit={dropHandler}>
+                    >
                         <div>
                         <img className={'btn7'} id='7' src={image7} />
                         </div>
@@ -131,7 +123,7 @@ function Canteen() {
                         "tableData": 'table-8-sdu-canteen-south'
                         }
                     }
-                    onHit={dropHandler}>
+                    >
                         <div>
                         <img className={'btn8'} id='8' src={image8} />
                         </div>
@@ -144,7 +136,7 @@ function Canteen() {
                         "tableData": 'table-9-sdu-canteen-south'
                         }
                     }
-                    onHit={dropHandler}>
+                    >
                         <div>
                         <img className={'btn9'} id='9' src={image9} />
                         </div>

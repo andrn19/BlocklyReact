@@ -25,9 +25,9 @@ const BlocklyComponent = (props) => {
             const localPolicies = localStorage.getItem("savedPolicies")
             const localJSON = localStorage.getItem("savedPoliciesJSON")
             const storedPolicies = localPolicies.split(/(?=<xml)/g);
-            const storedJSON = localJSON.split(/(?=,{ \"@type")/g);
+            const storedJSON = localJSON.split(/(?=,{ "@type")/g);
             const sp = storedPolicies.map(string => string.replaceAll('>,', '>'));
-            const sj = storedJSON.map(string => string.replaceAll(',{ \"@type"', '{ "@type"'));
+            const sj = storedJSON.map(string => string.replaceAll(',{ "@type"', '{ "@type"'));
             setSavedPolicies(sp)
             setPolicyJSON(sj)
         }

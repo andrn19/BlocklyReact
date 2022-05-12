@@ -7,16 +7,10 @@ const PolicyList = (props) => {
 
     const [savedPolicies, setSavedPolicies] = useState([]);
     const [selected, setSelected] = useState()
-
-    
     
     useEffect(() => {
         getSavedPolicies()
     }, [])
-
-    // useEffect(() => {
-    //     console.log(savedPolicies)
-    // })
 
     const getSavedPolicies = () => {
         const storedData = localStorage.getItem("savedPolicies");

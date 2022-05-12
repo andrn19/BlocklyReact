@@ -1,29 +1,48 @@
 import React, { useEffect, useState } from "react";
 import Table from "./DataTable";
 import './ComponentStyles.css'
-import { useEmitter } from './Emitter';
 import { getClient } from "../MQTT/mqtt";
 
 const TableInfoBox = () => {
 
-    const { data } = useEmitter();
-
     const [policies, setShownPolicies] = useState([]);
-
+    const [appliedPolicies, setAppliedPolicies] = useState([])
 
     useEffect(() => {
-        if (typeof data === 'object') {
-            setShownPolicies(arr => [...arr, data]);
+        if (appliedPolicies.length > 0) {
+            localStorage.setItem('appliedPolicies', appliedPolicies)
         }
-    }, [data]);
+    }, [appliedPolicies])
+
+    useEffect(() => {
+        if (localStorage.getItem("appliedPolicies") !== null) {
+            const localJSON = localStorage.getItem("appliedPolicies")
+            const storedJSON = localJSON.split(/(?=,{"@type")/g);
+            const sj = storedJSON.map(string => string.replaceAll(',{"@type"', '{"@type"'));
+            var td = []
+            for (let ele of sj) {
+                const tableData = { tableNr: 'Table ' + JSON.parse(ele).policyOn[0].name.split("-")[1], policy: JSON.parse(ele).name }
+                td.push(tableData)
+            }
+            setShownPolicies(td)
+            setAppliedPolicies(sj)
+        }
+    }, [])
 
     useEffect(() => {
         const client = getClient()
         client.on("message", (topic, message) => {
-            var msg = message.toString()
-            var jsonMSG = JSON.parse(msg)
+            if (topic === 'fcs/fcServiceTopic') {
+                console.log(topic)
+                const msg = message.toString()
+                const jsonMSG = JSON.parse(msg).doc
+                const jsonMSGString = JSON.stringify(jsonMSG)
+                setAppliedPolicies(arr => [...arr, jsonMSGString])
+                const tableData = { tableNr: 'Table ' + jsonMSG.policyOn[0].name.split("-")[1], policy: jsonMSG.name }
+                setShownPolicies(arr => [...arr, tableData])
+            }
         });
-    },[])
+    }, [])
 
     const policyDelete = () => {
         policies.pop();
@@ -35,7 +54,7 @@ const TableInfoBox = () => {
             Header: 'Applied Policies',
             columns: [
                 {
-                    Header: 'Table Nr.',
+                    Header: 'Table',
                     accessor: 'tableNr',
                 },
                 {

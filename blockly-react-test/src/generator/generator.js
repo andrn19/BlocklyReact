@@ -72,7 +72,7 @@ JSONGenerator['SpecificClearingPolicy'] = function (block) {
         statements_condition = statements_condition.slice(2, -1)
     }
     // var statements_actions = JSONGenerator.statementToCode(block, 'actions').slice(2, -1).replaceAll(',', ' | '); will be used if multiple actions can be used
-    var code = '{ "@type": "ClearingPolicy", "name": "' + text_policyname + '", "description": "", "enabled": "false", "condition": ' + statements_condition + ', "vars": [' + usedVars.slice(0, -1) + '], "action": "clear", "policyOn": [] }';
+    var code = '{ "@type": "ClearingPolicy", "name": "' + text_policyname + '", "description": "", "enabled": false, "condition": ' + statements_condition + ', "vars": [' + usedVars.slice(0, -1) + '], "action": "clear", "policyOn": [] }';
     return code;
 };
 
@@ -83,7 +83,7 @@ JSONGenerator['ClearingPolicy'] = function (block) {
     statements_condition = checkMultiCondition(statements_condition)
     usedVars = getVars(statements_condition, usedVars)
     // var statements_actions = JSONGenerator.statementToCode(block, 'actions').slice(2, -1).replaceAll(',', ' | ');
-    var code = '{ "@type": "ClearingPolicy", "name": "' + text_policyname + '", "description": "", "enabled": "false", "condition": ' + statements_condition + ', "vars": [' + usedVars.slice(0, -1) + '], "action": "clear", "policyOn": [] }';
+    var code = '{ "@type": "ClearingPolicy", "name": "' + text_policyname + '", "description": "", "enabled": false, "condition": ' + statements_condition + ', "vars": [' + usedVars.slice(0, -1) + '], "action": "clear", "policyOn": [] }';
     return code;
 };
 
@@ -94,7 +94,7 @@ JSONGenerator['CleaningPolicy'] = function (block) {
     statements_condition = checkMultiCondition(statements_condition)
     usedVars = getVars(statements_condition, usedVars)
     // var statements_actions = JSONGenerator.statementToCode(block, 'actions').slice(2, -1).replaceAll(',', ' | ');
-    var code = '{ "@type": "CleaningPolicy", "name": "' + text_policyname + '", "description": "", "enabled": "false", "condition":' + statements_condition + ', "vars": [' + usedVars.slice(0, -1) + '], "action": "clean", "policyOn": [] }';
+    var code = '{ "@type": "CleaningPolicy", "name": "' + text_policyname + '", "description": "", "enabled": false, "condition":' + statements_condition + ', "vars": [' + usedVars.slice(0, -1) + '], "action": "clean", "policyOn": [] }';
     return code;
 };
 
@@ -102,7 +102,7 @@ JSONGenerator['objectpolicy'] = function (block) {
     var text_policyname = block.getFieldValue('POLICYNAME');
     var statements_objects = JSONGenerator.statementToCode(block, 'objects').slice(2, -2);
     var statements_handling = JSONGenerator.statementToCode(block, 'handling').slice(2, -1).replaceAll(',', ' | ');
-    var code = '{ "@type": "ClearingPolicy", "name": "' + text_policyname + '", "description": "", "enabled": "flase", "actions": "' + statements_handling + '", "policyOn": [' + statements_objects + '] }';
+    var code = '{ "@type": "ClearingPolicy", "name": "' + text_policyname + '", "description": "", "enabled": flase, "actions": "' + statements_handling + '", "policyOn": [' + statements_objects + '] }';
     return code;
 };
 
@@ -170,21 +170,16 @@ JSONGenerator["time start"] = function (block) {
 
 JSONGenerator["people count"] = function (block) {
     var text_peopleCount = block.getFieldValue('peopleCount');
-    var code = '' + text_peopleCount + ',';
+    var code = '{"==": [{"var": "peopleCount"}, "' + text_peopleCount + '"]},';
     return code;
 };
 
 JSONGenerator["object count"] = function (block) {
     var text_objectCount = block.getFieldValue('objectCount');
-    var code = '' + text_objectCount + ',';
+    var code = '{"==": [{"var": "objectCount"}, "' + text_objectCount + '"]},';
     return code;
 };
 
-JSONGenerator["policyOnCompletion"] = function (block) {
-    var statement_onCompletion = block.getFieldValue('policyOnCompletion');
-    var code = '' + statement_onCompletion + ',';
-    return code;
-};
 
 /* Actions */
 

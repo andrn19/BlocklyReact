@@ -183,15 +183,15 @@ var blocks = [
     "tooltip": "",
     "helpUrl": ""
   },
-  {
-    "type": "allobjects",
-    "message0": "Clear All Objects",
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 65,
-    "tooltip": "",
-    "helpUrl": ""
-  },
+  // {
+  //   "type": "allobjects",
+  //   "message0": "Clear All Objects",
+  //   "previousStatement": null,
+  //   "nextStatement": null,
+  //   "colour": 65,
+  //   "tooltip": "",
+  //   "helpUrl": ""
+  // },
   {
     "type": "go to",
     "message0": "Go to",
@@ -330,35 +330,35 @@ var blocks = [
     "tooltip": "",
     "helpUrl": ""
   },
-  {
-    "type": "policyOnCompletion",
-    "message0": "On completion %1",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "policyOnCompletion",
-        "options": [
-          [
-            "Return to charger",
-            "Return to charger"
-          ],
-          [
-            "Go to next task",
-            "Go to next task"
-          ],
-          [
-            "Idle",
-            "Idle"
-          ]
-        ]
-      }
-    ],
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 260,
-    "tooltip": "",
-    "helpUrl": ""
-  },
+  // {
+  //   "type": "policyOnCompletion",
+  //   "message0": "On completion %1",
+  //   "args0": [
+  //     {
+  //       "type": "field_dropdown",
+  //       "name": "policyOnCompletion",
+  //       "options": [
+  //         [
+  //           "Return to charger",
+  //           "Return to charger"
+  //         ],
+  //         [
+  //           "Go to next task",
+  //           "Go to next task"
+  //         ],
+  //         [
+  //           "Idle",
+  //           "Idle"
+  //         ]
+  //       ]
+  //     }
+  //   ],
+  //   "previousStatement": null,
+  //   "nextStatement": null,
+  //   "colour": 260,
+  //   "tooltip": "",
+  //   "helpUrl": ""
+  // },
   {
     "type": "slow",
     "message0": "Slow",

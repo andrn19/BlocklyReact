@@ -6,7 +6,7 @@ import "../Components/ComponentStyles.css";
 import "../CustomBlocks/customBlocks";
 
 //components
-import BlocklyComponent, { Block, Value, Field, Shadow, Category } from '../Blockly';
+import BlocklyComponent, { Block, Category } from '../Blockly';
 
 const PolicyProgrammingPage = () => {
 
