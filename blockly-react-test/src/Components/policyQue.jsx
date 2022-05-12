@@ -1,55 +1,74 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import List from "./data";
-import jsonSimple from "json-simple";
+import { getClient } from '../MQTT/mqtt';
 
 const PolicyQue = () => {
 
     const [policies, setPolicies] = useState([]);
 
-    // const query = '"@type": "scm:Table"'
-    // const frameToSend = {
-    //     "frame": { query }
-    // }
 
-    // useEffect(() => {
-    //     const client = getClient();
-    //     let isActive = true;
-    //     if (isActive) {
-    //         client.publish('fcs/fcServiceTopic', JSON.stringify(frameToSend))
-    //         client.on("message", (topic, message) => {
-    //             var msg = message.toString()
-    //             var jsonMSG = jsonSimple.decode(msg)
-    //             var policies = jsonMSG.@reverse.policyOn.name
-    //             setPolicies(policies)
-    //         });
-    //         console.log(policies)
+    useEffect(() => {
+        const query = '"@type": "scm:Table"'
+        const frameToSend = { "frame": query }
+        const frameString = JSON.stringify(frameToSend)
+        const client = getClient();
+        client.publish('fcs/fcClientTopic', frameString);
+    }, [])
+
+    useEffect(() => {
+        const client = getClient();
+        client.on("message", (topic, message) => {
+            if (topic === 'fcs/fcClientTopic') {
+                console.log(topic)
+                if (localStorage.getItem("appliedPolicies") !== null) {
+                    const localJSON = localStorage.getItem("appliedPolicies")
+                    const storedJSON = localJSON.split(/(?=,{"@type")/g);
+                    const sj = storedJSON.map(string => string.replaceAll(',{"@type"', '{ "@type"'));
+                    //adding mock status
+                    for (let ele of sj) {
+                        const eleObj = JSON.parse(ele)
+                        const newEle = { ...eleObj, status: policyStatus[Math.floor(Math.random() * 4)] }
+                        const newEleString = JSON.stringify(newEle)
+                        sj[sj.indexOf(ele)] = newEleString
+                    }
+                    setPolicies(sj)
+                }
+            }
+        })
+    }, [])
+
+
+    // const onDragEnd = (param) => {
+    //     const srcI = param.source.index;
+    //     const desI = param.destination.index;
+    //     if (desI != null) {
+    //         list.splice(desI, 0, list.splice(srcI, 1)[0]);
+    //         List.saveList(list);
     //     }
-    //     return () => { isActive = false }
-    // }, []);
+    // };
 
-    const onDragEnd = (param) => {
-        const srcI = param.source.index;
-        const desI = param.destination.index;
-        if (desI != null) {
-            list.splice(desI, 0, list.splice(srcI, 1)[0]);
-            List.saveList(list);
-        }
-    };
+    // const list = List.getList();
 
-    const list = List.getList();
+    const getRandomTime = () => {
+        const hours = Math.floor(Math.random() * 14) + 10
+        const minuts = Math.floor(Math.random() * 50) + 10
+        const randomTime = hours + ':' + minuts
+        return randomTime
+    }
+
+    const policyStatus = ["Done", "In Progress", "Rejected", "Waiting"]
 
     const stateStyle = (state) => {
         if (state === "Done") {
             return { color: "green" }
         }
-        if (state === "In Progress,") {
+        if (state === "In Progress") {
             return { color: "blue" }
         }
         if (state === "Rejected") {
             return { color: "red" }
         }
-        else {
+        if (state === "Waiting") {
             return { color: "grey" }
         }
     }
@@ -58,22 +77,23 @@ const PolicyQue = () => {
         <div className="queDiv">
             <center style={{ color: "black" }}><h2>Tasks</h2></center>
             <DragDropContext
-                onDragEnd={onDragEnd}>
+            // onDragEnd={}
+            >
                 <ul className="queList">
                     <Droppable droppableId="droppable-1">
                         {(provided, _) => (
                             <div ref={provided.innerRef} {...provided.droppableProps}>
-                                {list.map((item, i) => (
-                                    <Draggable key={item.table}
-                                        draggableId={'draggable-' + item.table}
+                                {policies.map((policy, i) => (
+                                    <Draggable key={JSON.parse(policy).policyOn[0].name.split("-")[1]}
+                                        draggableId={'draggable-' + JSON.parse(policy).policyOn[0].name.split("-")[1]}
                                         index={i}>
                                         {(provided, snapshot) => (
                                             <p className="queListItem"
                                                 ref={provided.innerRef}
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}>
-                                                Table {item.table}: <span style={stateStyle(item.tableStatus)}>{item.tableStatus} {item.policy}</span><br />
-                                                <span style={{ fontSize: 14, color: "dimgrey" }}> Last cleaned {item.lastClean}</span>
+                                                Table {JSON.parse(policy).policyOn[0].name.split("-")[1]}: <span style={stateStyle(JSON.parse(policy).status)}>{JSON.parse(policy).status} {JSON.parse(policy).name}</span><br />
+                                                <span style={{ fontSize: 14, color: "dimgrey" }}> Last cleaned {getRandomTime()}</span>
                                             </p>
                                         )}
                                     </Draggable>

@@ -1,30 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { useEmitter } from './Emitter';
 import { DragDropContainer } from 'react-drag-drop-container';
-import { closeConnection, getClient } from '../MQTT/mqtt';
+import { getClient } from '../MQTT/mqtt';
 
 
 function DragNDropPolicies() {
     const [policies, setPolicies] = useState([]);
+    //const [appliedPolicies, setAppliedPolicies] = useState([])
 
     useEffect(() => {
         if (localStorage.getItem("savedPoliciesJSON") !== null) {
             const localJSON = localStorage.getItem("savedPoliciesJSON")
-            const storedJSON = localJSON.split(/(?=,{ \"@type")/g);
-            const sj = storedJSON.map(string => string.replaceAll(',{ \"@type"', '{ "@type"'));
+            const storedJSON = localJSON.split(/(?=,{ "@type")/g);
+            const sj = storedJSON.map(string => string.replaceAll(',{ "@type"', '{ "@type"'));
             setPolicies(sj)
         }
+
     }, [])
 
+    // useEffect(() => {
+    //     console.log(appliedPolicies)
+    //     if(appliedPolicies.length > 0){
+    //         localStorage.setItem('appliedPolicies', appliedPolicies)  
+    //     }
+    // }, [appliedPolicies])
 
-    const { setDataEvent } = useEmitter();
-
+    
     const dropHandler = (e, policy) => {
-        setDataEvent(`${JSON.stringify(e.dropData)}`);
-
-        var policyJson = policy;
+        const policyJson = policy;
         const tableObj = { "@type": "Table", "name": e.dropData.tableData };
         policyJson.policyOn.push(tableObj);
+        policyJson.enabled = true
 
         if (policyJson.vars.length > 0) {
             var varString = JSON.stringify(policyJson.vars)
@@ -32,12 +37,17 @@ function DragNDropPolicies() {
             var varObj = JSON.parse(varString);
             policyJson.vars = varObj
         }
-        console.log('hey')
+        //const stringPolicyJson = JSON.stringify(policyJson)
+        //setAppliedPolicies(arr => [...arr, stringPolicyJson])
+
+
         //mqtt publishing the generated code
-        // const docObj = {"doc": policyJson }
-        // const jsonMSG = JSON.stringify(docObj)
-        // const client = getClient();
-        // client.publish('fcs/fcServiceTopic', jsonMSG);
+        const docObj = {"doc": policyJson }
+        const jsonMSG = JSON.stringify(docObj)
+        const client = getClient();
+        client.publish('fcs/fcServiceTopic', jsonMSG);
+
+        e.stopImmediatePropagation()
     };
 
     return (
@@ -48,8 +58,8 @@ function DragNDropPolicies() {
                     <DragDropContainer
                         targetKey="foo"
                         dragData={JSON.parse(policy).name}
-                        onHit={(e) => dropHandler(e, JSON.parse(policy))}
-                        key={policy.Id}>
+                        onDrop={(e) => dropHandler(e, JSON.parse(policy))}
+                        key={JSON.parse(policy).name}>
                         <p className="policies"> {JSON.parse(policy).name} </p>
                     </DragDropContainer>
                 ))}
