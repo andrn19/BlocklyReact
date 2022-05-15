@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Table from "./DataTable";
-import './ComponentStyles.css'
+import Table from "../CommonComponents/DataTable";
+import '../Styles/ComponentStyles.css'
 import { getClient } from "../MQTT/mqtt";
 
 const TableInfoBox = () => {

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 
-import "../Components/ComponentStyles.css";
+import "../Styles/ComponentStyles.css";
 import "../CustomBlocks/customBlocks";
 
 //components

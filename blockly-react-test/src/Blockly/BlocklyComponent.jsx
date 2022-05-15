@@ -5,7 +5,7 @@ import Blockly from 'blockly/core';
 import locale from 'blockly/msg/en';
 import 'blockly/blocks';
 
-import PolicyList from "../Components/PolicyList";
+import PolicyList from "../ComponentsProgrammingPage/PolicyList";
 import JSONGenerator from "../generator/generator";
 
 Blockly.setLocale(locale);

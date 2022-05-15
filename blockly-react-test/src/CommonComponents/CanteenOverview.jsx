@@ -1,5 +1,5 @@
 import React from 'react';
-import "./ComponentStyles.css";
+import '../Styles/ComponentStyles.css';
 import image from '../Assets/Canteen_walls.png';
 import image1 from '../Assets/LargeTableHorizontalOne.png';
 import image2 from '../Assets/LargeTableHorizontalTwo.png';

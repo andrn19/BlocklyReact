@@ -1,13 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../Components/ComponentStyles.css";
+import "../Styles/ComponentStyles.css";
 
 //components
-import TableInfoBox from "../Components/TableInfoBox";
-import DragNDropBoard from "../Components/DragNDropBoards";
-import CanteenOverview from "../Components/CanteenOverview";
-import Emitter from "../Components/Emitter";
+import TableInfoBox from "../ComponentsConfigPage/TableInfoBox";
+import DragNDropBoard from "../ComponentsConfigPage/DragNDropBoards";
+import CanteenOverview from "../CommonComponents/CanteenOverview";
 
 const TableConfigPage = () => {
 
@@ -31,12 +30,9 @@ const TableConfigPage = () => {
             <button onClick={toMain} id="BackButton">
                 &laquo; Back
             </button>
-            <Emitter>
             <TableInfoBox />
             <DragNDropBoard id="board-1"></DragNDropBoard>
             <center><CanteenOverview/></center>
-            </Emitter>
-            
         </div>
     );
 }

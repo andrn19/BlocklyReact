@@ -1,5 +1,5 @@
 import React from "react";
-import "./ComponentStyles.css";
+import '../Styles/ComponentStyles.css';
 import "./DragNDropPolicies";
 import DragNDropPolicies from "./DragNDropPolicies";
 

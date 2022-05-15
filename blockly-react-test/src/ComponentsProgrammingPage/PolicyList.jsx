@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Blockly from 'blockly/core';
 
-import "./ComponentStyles.css";
+import '../Styles/ComponentStyles.css';
 
 const PolicyList = (props) => {
 
