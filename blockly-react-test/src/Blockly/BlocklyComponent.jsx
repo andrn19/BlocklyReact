@@ -94,7 +94,7 @@ const BlocklyComponent = (props) => {
         var code = JSONGenerator.workspaceToCode(
             workspace
         );
-        //saving the xml for the workspace so user can save created blocks
+        //saving the xml and json for the workspace so user can save created blocks
         if (code.length > 0) {
             var xml = Blockly.Xml.workspaceToDom(workspace);
             //check if the saved block is already saved, if so update it to new one, else just add it

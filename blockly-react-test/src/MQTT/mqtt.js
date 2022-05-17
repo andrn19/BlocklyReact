@@ -29,16 +29,6 @@ export function unsubscribe(topic) {
     client.unsubscribe(topic);
 }
 
-//skal nok laves i hvert component der skal bruge det
-// export function onMessage() {
-//     client.on("message", (topic, message) => {
-//         var msg = message.toString()
-//         var jsonMSG = jsonSimple.decode(msg)
-//         console.log(msg)
-//         console.log(jsonMSG)
-//     });
-// }
-
 export function closeConnection() {
     client.end();
 }
