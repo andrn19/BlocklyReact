@@ -11,7 +11,6 @@ const PolicyQue = () => {
         const query = '"@type": "scm:Table"'
         const frameToSend = { "frame": query }
         const frameString = JSON.stringify(frameToSend)
-        const client = getClient();
         mqttPublish('fcs/fcClientTopic', frameString);
     }, [])
 
