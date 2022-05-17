@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DragDropContainer } from 'react-drag-drop-container';
-import { getClient } from '../MQTT/mqtt';
+import { mqttPublish } from '../MQTT/mqtt';
 
 
 function DragNDropPolicies() {
@@ -44,8 +44,7 @@ function DragNDropPolicies() {
         //mqtt publishing the generated code
         const docObj = {"doc": policyJson }
         const jsonMSG = JSON.stringify(docObj)
-        const client = getClient();
-        client.publish('fcs/fcServiceTopic', jsonMSG);
+        mqttPublish('fcs/fcServiceTopic', jsonMSG);
 
         e.stopImmediatePropagation()
     };

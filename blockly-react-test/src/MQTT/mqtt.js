@@ -33,3 +33,6 @@ export function closeConnection() {
     client.end();
 }
 
+export function mqttPublish(topic, msg) {
+    client.publish(topic, msg)
+}

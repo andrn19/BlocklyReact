@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { getClient } from '../MQTT/mqtt';
+import { mqttPublish, getClient } from '../MQTT/mqtt';
 
 const PolicyQue = () => {
 
@@ -12,7 +12,7 @@ const PolicyQue = () => {
         const frameToSend = { "frame": query }
         const frameString = JSON.stringify(frameToSend)
         const client = getClient();
-        client.publish('fcs/fcClientTopic', frameString);
+        mqttPublish('fcs/fcClientTopic', frameString);
     }, [])
 
     useEffect(() => {
