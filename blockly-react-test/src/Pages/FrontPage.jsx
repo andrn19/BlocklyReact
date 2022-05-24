@@ -8,7 +8,7 @@ import CanteenOverview from "../CommonComponents/CanteenOverview";
 import PolicyQue from "../ComponentsCanteenPage/policyQue";
 import StopButton from "../ComponentsCanteenPage/StopButton";
 
-const CanteenPage = () => {
+const FrontPage = () => {
 
     let navigate = useNavigate();
 
@@ -29,4 +29,4 @@ const CanteenPage = () => {
     );
 }
 
-export default CanteenPage
+export default FrontPage

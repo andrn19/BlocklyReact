@@ -33,7 +33,6 @@ const TableInfoBox = () => {
         const client = getClient()
         client.on("message", (topic, message) => {
             if (topic === 'fcs/fcServiceTopic') {
-                console.log(topic)
                 const msg = message.toString()
                 const jsonMSG = JSON.parse(msg).doc
                 const jsonMSGString = JSON.stringify(jsonMSG)

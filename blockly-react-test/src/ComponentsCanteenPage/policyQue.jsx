@@ -18,7 +18,6 @@ const PolicyQue = () => {
         const client = getClient();
         client.on("message", (topic, message) => {
             if (topic === 'fcs/fcClientTopic') {
-                console.log(topic)
                 if (localStorage.getItem("appliedPolicies") !== null) {
                     const localJSON = localStorage.getItem("appliedPolicies")
                     const storedJSON = localJSON.split(/(?=,{"@type")/g);

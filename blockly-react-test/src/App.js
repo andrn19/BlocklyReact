@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 //pages
 import PolicyProgrammingPage from './Pages/PolicyProgrammingPage';
-import CanteenPage from './Pages/CanteenPage';
+import FrontPage from './Pages/FrontPage';
 import TableConfigPage from './Pages/TableConfigPage';
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<CanteenPage />} />
+        <Route exact path="/" element={<FrontPage />} />
         <Route path="/config" element={<TableConfigPage />} />
         <Route path="/programming" element={<PolicyProgrammingPage />} />
       </Routes>
