@@ -35,18 +35,6 @@ const PolicyQue = () => {
         })
     }, [])
 
-
-    // const onDragEnd = (param) => {
-    //     const srcI = param.source.index;
-    //     const desI = param.destination.index;
-    //     if (desI != null) {
-    //         list.splice(desI, 0, list.splice(srcI, 1)[0]);
-    //         List.saveList(list);
-    //     }
-    // };
-
-    // const list = List.getList();
-
     const getRandomTime = () => {
         const hours = Math.floor(Math.random() * 14) + 10
         const minuts = Math.floor(Math.random() * 50) + 10

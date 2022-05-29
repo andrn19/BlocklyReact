@@ -18,7 +18,6 @@ function DragNDropPolicies() {
     }, [])
 
     // useEffect(() => {
-    //     console.log(appliedPolicies)
     //     if(appliedPolicies.length > 0){
     //         localStorage.setItem('appliedPolicies', appliedPolicies)  
     //     }
